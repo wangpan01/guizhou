@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>贵州理科微波科技有限公司 - 专业微波器件供应商</title>
+  <style>
+    :root {
+      --primary: #1a3c6e;
+      --accent: #e84c3d;
+      --light-bg: #f5f7fa;
+      --text: #333;
+      --text-light: #666;
+      --border: #e0e6ef;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(26,60,110,0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--primary);
+      color: rgba(255,255,255,0.75);
+      font-size: 13px;
+      padding: 6px 0;
+    }
+    .topbar .inner { max-width: 1440px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: flex-end; gap: 24px; }
+    .topbar a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .topbar a:hover { color: #fff; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-wrap img { height: 48px; width: auto; object-fit: contain; }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-name { font-size: 18px; font-weight: 700; color: var(--primary); line-height: 1.2; }
+    .logo-en { font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-top: 2px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      padding: 8px 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active { background: var(--primary); color: #fff; }
+    .nav-phone { margin-left: 16px; background: var(--accent); color: #fff !important; border-radius: 4px; font-weight: 600; }
+    .nav-phone:hover { background: #c0392b !important; color: #fff !important; }
+
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      z-index: 99;
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      display: block;
+      padding: 12px 16px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a.active { background: var(--primary); color: #fff; }
+    .mobile-nav .nav-phone { background: var(--accent); color: #fff !important; text-align: center; font-weight: 600; margin-top: 8px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, rgba(14,42,82,0.88) 0%, rgba(26,60,110,0.85) 40%, rgba(30,87,153,0.82) 100%), url('images/hero-bg.png') center/cover no-repeat;
+      color: #fff;
+      padding: 90px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 13px;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero h1 span { color: #7eb8f7; }
+    .hero p { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 36px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 13px 32px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #c0392b; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 13px 32px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num { font-size: 36px; font-weight: 800; color: #7eb8f7; line-height: 1; }
+    .hero-stat .label { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 72px 40px; }
+    .section-inner { max-width: 1440px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(26,60,110,0.08);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .section-header h2 { font-size: 32px; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+    .section-header p { font-size: 16px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.8; }
+    .divider { width: 48px; height: 4px; background: var(--accent); margin: 16px auto 0; border-radius: 2px; }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--light-bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .about-content h3 { font-size: 26px; color: var(--primary); margin-bottom: 16px; font-weight: 700; }
+    .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 16px; font-size: 15px; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag {
+      background: var(--primary);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+    .about-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .about-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary);
+    }
+    .about-card .icon { font-size: 32px; margin-bottom: 10px; }
+    .about-card h4 { font-size: 15px; color: var(--primary); font-weight: 700; margin-bottom: 6px; }
+    .about-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+    /* ===== PRODUCTS ===== */
+    #products { background: #fff; }
+    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .prod-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .prod-img {
+      background: linear-gradient(135deg, #1a3c6e 0%, #2563a8 100%);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .prod-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .prod-img.has-img::after { display: none; }
+    .prod-body { padding: 24px; }
+    .prod-body h3 { font-size: 18px; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+    .prod-body p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+    .prod-features { list-style: none; padding: 0; }
+    .prod-features li { font-size: 13px; color: var(--text); padding: 5px 0; border-bottom: 1px dashed #eee; display: flex; align-items: center; gap: 8px; }
+    .prod-features li:last-child { border-bottom: none; }
+    .prod-features li::before { content: '✓'; color: var(--accent); font-weight: bold; flex-shrink: 0; }
+    .prod-link { display: inline-flex; align-items: center; gap: 6px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 16px; }
+    .prod-link:hover { color: var(--accent); }
+
+    /* ===== QUALITY ===== */
+    #quality { background: var(--light-bg); }
+    .quality-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .quality-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+    .quality-card:hover { transform: translateY(-4px); }
+    .quality-card .icon { font-size: 44px; margin-bottom: 16px; }
+    .quality-card h3 { font-size: 18px; color: var(--primary); font-weight: 700; margin-bottom: 12px; }
+    .quality-card p { font-size: 14px; color: var(--text-light); line-height: 1.8; }
+
+    /* ===== PRODUCT TABLE ===== */
+    .prod-table-wrap { overflow-x: auto; margin-top: 20px; }
+    .prod-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .prod-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .prod-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #eef0f5;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .prod-table tr:nth-child(even) td { background: #f8fafd; }
+    .prod-table tr:hover td { background: #eef4ff; }
+    .prod-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .prod-tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 2px solid var(--border);
+      background: #fff;
+      color: var(--text-light);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .prod-tab.active, .prod-tab:hover {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+    .prod-panel { display: none; }
+    .prod-panel.active { display: block; }
+
+    /* ===== APPLICATIONS ===== */
+    #applications { background: #fff; }
+    .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .app-card {
+      background: var(--primary);
+      border-radius: 10px;
+      padding: 28px 20px;
+      text-align: center;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .app-card:hover { background: var(--accent); transform: translateY(-4px); }
+    .app-card .icon { font-size: 36px; margin-bottom: 12px; }
+    .app-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .app-card p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: linear-gradient(135deg, #0e2a52 0%, #1a3c6e 100%); color: #fff; padding: 72px 40px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .contact-info h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+    .contact-info p { color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 32px; font-size: 15px; }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-item .ci-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .contact-item .ci-text h4 { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+    .contact-item .ci-text p { font-size: 16px; color: #fff; font-weight: 600; line-height: 1.5; }
+    .contact-form {
+      background: #fff;
+      border-radius: 14px;
+      padding: 36px;
+      color: var(--text);
+    }
+    .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; color: var(--text-light); font-weight: 500; }
+    .form-group input, .form-group textarea, .form-group select {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--light-bg);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--primary);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-submit { width: 100%; margin-top: 6px; }
+    .form-note { font-size: 12px; color: var(--text-light); margin-top: 12px; text-align: center; }
+
+    /* ===== DIRECT CONTACT BUTTONS ===== */
+    .direct-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .direct-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      width: 100%;
+      text-align: left;
+    }
+    .direct-btn-call {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .direct-btn-call:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+    .direct-btn-wx {
+      background: #07c160;
+      color: #fff;
+      border: 1px solid #06ad56;
+    }
+    .direct-btn-wx:hover { background: #06ad56; transform: translateY(-1px); }
+    .direct-btn .db-icon { font-size: 22px; flex-shrink: 0; }
+    .direct-btn .db-text { display: flex; flex-direction: column; }
+    .direct-btn .db-label { font-size: 12px; opacity: 0.75; }
+    .direct-btn .db-val { font-size: 17px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #0a1e3c; color: rgba(255,255,255,0.65); padding: 40px 40px 24px; }
+    .footer-inner { max-width: 1440px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 24px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; }
+    .footer-logo img { height: 40px; opacity: 0.85; }
+    .footer-logo span { font-size: 16px; color: rgba(255,255,255,0.85); font-weight: 600; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { text-align: center; padding-top: 20px; font-size: 13px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      nav { gap: 0; }
+      nav a { padding: 8px 12px; font-size: 14px; }
+    }
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .prod-grid, .quality-grid { grid-template-columns: 1fr 1fr !important; }
+      .app-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 30px; }
+      section { padding: 56px 24px; }
+      .hero { padding: 64px 24px 56px; }
+      footer { padding: 32px 24px 20px; }
+      .topbar .inner { padding: 0 24px; }
+      .header-inner { padding: 0 20px; }
+    }
+    @media (max-width: 600px) {
+      .topbar { display: none; }
+      .prod-grid, .quality-grid, .app-grid { grid-template-columns: 1fr !important; }
+      .about-card-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 22px; }
+      .header-inner { padding: 0 16px; height: 60px; }
+      .mobile-nav { top: 60px; }
+      .logo-name { font-size: 14px; }
+      .logo-en { display: none; }
+      .logo-wrap img { height: 36px; }
+      .hero-stats { gap: 20px; }
+      .hero-stat .num { font-size: 26px; }
+      section { padding: 44px 16px; }
+      .hero { padding: 52px 16px 44px; }
+      footer { padding: 28px 16px 16px; }
+      .prod-tabs { gap: 6px; }
+      .prod-tab { padding: 7px 12px; font-size: 13px; }
+      .contact-form { padding: 24px 20px; }
+      .section-header h2 { font-size: 24px; }
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner">
+    <span>📞 18656800727 / 17785663396</span>
+    <span>📧 微信同号</span>
+    <a href="#contact">在线留言</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo-wrap">
+      <img src="logo.png" alt="贵州理科微波科技有限公司" onerror="this.style.display='none'" />
+      <div class="logo-text">
+        <span class="logo-name">贵州理科微波科技有限公司</span>
+        <span class="logo-en">Guizhou Like Microwave Technology Co., Ltd.</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#" class="active">首页</a>
+      <a href="#about">关于我们</a>
+      <a href="#products">产品中心</a>
+      <a href="#quality">质量保证</a>
+      <a href="#contact" class="nav-phone">联系我们</a>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" onclick="closeMenu()">首页</a>
+  <a href="#about" onclick="closeMenu()">关于我们</a>
+  <a href="#products" onclick="closeMenu()">产品中心</a>
+  <a href="#quality" onclick="closeMenu()">质量保证</a>
+  <a href="#contact" class="nav-phone" onclick="closeMenu()">📞 联系我们</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div class="hero-badge">专业微波器件供应商</div>
+    <h1>精密<span>微波器件</span>解决方案<br/>专注射频无源器件研发与制造</h1>
+    <p>贵州理科微波科技有限公司专注于微波无源器件的研发、生产与销售，产品涵盖滤波器、功分器、耦合器、电桥等，广泛应用于通信、航空、测试仪表等领域。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">查看产品</a>
+      <a href="#contact" class="btn-outline">联系我们</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">多年</div>
+        <div class="label">行业经验</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">4+</div>
+        <div class="label">核心产品系列</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">100%</div>
+        <div class="label">出厂检测</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">高新</div>
+        <div class="label">技术企业</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">ABOUT US</div>
+      <h2>关于我们</h2>
+      <div class="divider"></div>
+      <p>贵州理科微波科技有限公司是一家专注于微波无源器件研发与制造的专业化科技企业</p>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-content">
+        <h3>专注微波无源器件，服务全球通信系统</h3>
+        <p>贵州理科微波科技有限公司专注于微波无源器件的研发、制造与销售，是一家具有自主知识产权的高新技术企业，为全国微波通信系统提供高性能、高可靠的射频无源器件解决方案。</p>
+        <p>公司核心产品涵盖<strong>滤波器、功分器、耦合器、电桥</strong>等关键射频无源器件，覆盖 PCB、LTCC、GaAs、薄膜、陶瓷等多元化工艺平台，实现从器件研发设计、仿真优化到全流程管控、自动化生产的完整技术链条，满足不同频段下小型化、高集成、高可靠的需求。</p>
+        <div style="margin:16px 0;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <img src="images/divider_image4.jpeg" alt="LTCC微波器件产品实物" style="height:80px;width:auto;border-radius:8px;border:1px solid var(--border);background:#fff;padding:4px;" />
+          <span style="font-size:13px;color:var(--text-light);">LTCC 微波无源器件 — SMD贴片封装</span>
+        </div>
+        <p>产品详细规格遵循 <strong>GJB9152-2017</strong> 等国家军工标准规范，可直接对标 Mini-Circuits 等国际主流品牌，广泛应用于通信系统、射频前端、航空装备、高端仪器等领域。</p>
+        <div class="about-tags">
+          <span class="tag">技术研发</span>
+          <span class="tag">精密制造</span>
+          <span class="tag">品质保证</span>
+          <span class="tag">快速交付</span>
+          <span class="tag">定制服务</span>
+        </div>
+      </div>
+      <div class="about-card-grid">
+        <div class="about-card">
+          <div class="icon">🏭</div>
+          <h4>专业制造</h4>
+          <p>先进生产设备，精密加工工艺，保障产品一致性</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">🔬</div>
+          <h4>研发创新</h4>
+          <p>专业工程师团队，持续技术创新与产品迭代</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">✅</div>
+          <h4>严格检测</h4>
+          <p>100%出厂测试，完整质量追溯体系</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">🤝</div>
+          <h4>优质服务</h4>
+          <p>快速响应客户需求，提供完整技术支持</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">PRODUCTS</div>
+      <h2>产品中心</h2>
+      <div class="divider"></div>
+      <p>公司专注微波无源器件领域，产品覆盖滤波器（85+ 款）、功分器（8 款）、耦合器、电桥等系列，遵循 GJB9152-2017 等国家军工标准规范，可直接对标 Mini-Circuits 等国际品牌</p>
+    </div>
+
+    <!-- Product overview cards -->
+    <div class="prod-grid fade-in" style="margin-bottom:52px;grid-template-columns:repeat(4, 1fr);">
+      <div class="prod-card">
+        <div class="prod-img has-img"><img src="images/filter_image4.jpeg" alt="LTCC滤波器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
+        <div class="prod-body">
+          <h3>滤波器系列</h3>
+          <p>覆盖 LTCC 低通（29款）/ 带通（30款）/ 高通（21款）、薄膜带通（5款）等系列，封装 1206/1812/0805 多种规格，频率 DC~41GHz，可直接对标 Mini-Circuits LFCN/HFCN 系列。</p>
+          <ul class="prod-features">
+            <li>LTCC 低通滤波器 · 29 款（DC~7.2GHz）</li>
+            <li>LTCC 带通滤波器 · 30 款（86MHz~41GHz）</li>
+            <li>LTCC 高通滤波器 · 21 款（1~6.3GHz）</li>
+            <li>薄膜带通滤波器 · 5 款（3.2~40GHz）</li>
+            <li>遵循 GJB9152-2017 标准</li>
+          </ul>
+          <a href="#prod-detail" class="prod-link" onclick="switchTab('lpf')">查看选型清单 →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img has-img"><img src="images/divider_image4.jpeg" alt="LTCC功分器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
+        <div class="prod-body">
+          <h3>功分器系列</h3>
+          <p>LTCC 功率分配器（2路），频率覆盖 900 MHz ~ 4.3 GHz，标准 1206 封装（3.2×1.6mm），也提供宽带 100~3000 MHz 大尺寸型号，可直接对标 Mini-Circuits SCN 系列。</p>
+          <ul class="prod-features">
+            <li>LTCC 2路功分器（SMD贴片）</li>
+            <li>频率：900 MHz ~ 4300 MHz</li>
+            <li>标准封装：3.2×1.6mm</li>
+            <li>功率：≤ 2W，阻抗：50Ω</li>
+            <li>工作温度：-55°C ~ +125°C</li>
+          </ul>
+          <a href="#prod-detail" class="prod-link" onclick="switchTab('divider')">查看选型清单 →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img has-img"><img src="images/ltcc-structure.png" alt="LTCC结构图" loading="lazy" style="background:#f0f4ff;object-fit:contain;padding:20px;" /></div>
+        <div class="prod-body">
+          <h3>电桥系列</h3>
+          <p>LTCC 混合电桥产品，包含 90° 正交混合电桥和 180° 混合电桥，适用于相移控制、功率合成与分配、I/Q 调制等射频前端电路设计。</p>
+          <ul class="prod-features">
+            <li>90° / 180° 混合电桥（LTCC）</li>
+            <li>宽频带，幅相一致性好</li>
+            <li>SMD 贴片封装</li>
+            <li>标准 50Ω 系统阻抗</li>
+            <li>可定制频段与封装形式</li>
+          </ul>
+          <a href="#prod-detail" class="prod-link" onclick="switchTab('bridge')">查看选型清单 →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img has-img"><img src="images/product-cavity.png" alt="耦合器产品" loading="lazy" /></div>
+        <div class="prod-body">
+          <h3>耦合器系列</h3>
+          <p>宽带定向耦合器产品，覆盖 100 MHz ~ 6000 MHz 多种耦合度选择（3/6/10/20 dB），适用于功率监测、信号采样、射频测试等应用场景。</p>
+          <ul class="prod-features">
+            <li>宽带定向耦合器（PCB/LTCC）</li>
+            <li>频率：100 ~ 6000 MHz</li>
+            <li>耦合度：3/6/10/20 dB 可选</li>
+            <li>高方向性、低主路插损</li>
+            <li>支持定制化频段与指标</li>
+          </ul>
+          <a href="#prod-detail" class="prod-link" onclick="switchTab('coupler')">查看选型清单 →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product detail tables -->
+    <div id="prod-detail" class="fade-in">
+      <h3 style="font-size:20px;color:var(--primary);margin-bottom:20px;font-weight:700;">📋 产品选型清单</h3>
+      <div class="prod-tabs">
+        <button class="prod-tab active" onclick="switchTab('lpf')">LTCC 低通滤波器</button>
+        <button class="prod-tab" onclick="switchTab('bpf')">LTCC 带通滤波器</button>
+        <button class="prod-tab" onclick="switchTab('hpf')">LTCC 高通滤波器</button>
+        <button class="prod-tab" onclick="switchTab('thinfilm')">薄膜带通滤波器</button>
+        <button class="prod-tab" onclick="switchTab('divider')">功分器系列</button>
+        <button class="prod-tab" onclick="switchTab('coupler')">耦合器系列</button>
+        <button class="prod-tab" onclick="switchTab('bridge')">电桥系列</button>
+      </div>
+
+      <!-- LPF panel -->
+      <div id="tab-lpf" class="prod-panel active">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">以下为 LTCC 低通滤波器部分选型清单（全系列请联系询价）。产品遵循 GJB9152-2017 标准，1206 封装（3.2×1.6mm），功率 ≤2W，温度 -55°C~+125°C。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>型号</th>
+                <th>通带频率</th>
+                <th>封装尺寸</th>
+                <th>对标 Mini-Circuits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>GLLPF-100-32-16</td><td>DC ~ 100 MHz</td><td>3.2×1.6 mm</td><td>LFCN-80</td></tr>
+              <tr><td>2</td><td>GLLPF-200-32-16</td><td>DC ~ 200 MHz</td><td>3.2×1.6 mm</td><td>LFCN-225</td></tr>
+              <tr><td>3</td><td>GLLPF-400-32-16</td><td>DC ~ 400 MHz</td><td>3.2×1.6 mm</td><td>LFCN-400</td></tr>
+              <tr><td>4</td><td>GLLPF-575-32-16</td><td>DC ~ 600 MHz</td><td>3.2×1.6 mm</td><td>LFCN-575</td></tr>
+              <tr><td>5</td><td>GLLPF-630-32-16</td><td>DC ~ 700 MHz</td><td>3.2×1.6 mm</td><td>LFCN-630</td></tr>
+              <tr><td>6</td><td>GLLPF-800-32-16</td><td>DC ~ 800 MHz</td><td>3.2×1.6 mm</td><td>LFCN-800</td></tr>
+              <tr><td>7</td><td>GLLPF-1000-32-16</td><td>DC ~ 1000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-1000</td></tr>
+              <tr><td>8</td><td>GLLPF-1200-32-16</td><td>DC ~ 1200 MHz</td><td>3.2×1.6 mm</td><td>LFCN-1200</td></tr>
+              <tr><td>9</td><td>GLLPF-1325-32-16</td><td>DC ~ 1300 MHz</td><td>3.2×1.6 mm</td><td>LFCN-1325</td></tr>
+              <tr><td>10</td><td>GLLPF-1575-32-16</td><td>DC ~ 1600 MHz</td><td>3.2×1.6 mm</td><td>LFCN-1575</td></tr>
+              <tr><td>11</td><td>GLLPF-1700-32-16</td><td>DC ~ 1700 MHz</td><td>3.2×1.6 mm</td><td>LFCN-1700</td></tr>
+              <tr><td>12</td><td>GLLPF-2000-32-16</td><td>DC ~ 2000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2000</td></tr>
+              <tr><td>13</td><td>GLLPF-2250-32-16</td><td>DC ~ 2250 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2250</td></tr>
+              <tr><td>14</td><td>GLLPF-2400-32-16</td><td>DC ~ 2400 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2400</td></tr>
+              <tr><td>15</td><td>GLLPF-2500-32-16</td><td>DC ~ 2500 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2500</td></tr>
+              <tr><td>16</td><td>GLLPF-2600-32-16</td><td>DC ~ 2600 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2600</td></tr>
+              <tr><td>17</td><td>GLLPF-2750-32-16</td><td>DC ~ 2800 MHz</td><td>3.2×1.6 mm</td><td>LFCN-2750</td></tr>
+              <tr><td>18</td><td>GLLPF-3000-32-16</td><td>DC ~ 3000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-3000</td></tr>
+              <tr><td>19</td><td>GLLPF-3400-32-16</td><td>DC ~ 3400 MHz</td><td>3.2×1.6 mm</td><td>LFCN-3400</td></tr>
+              <tr><td>20</td><td>GLLPF-3750-32-16</td><td>DC ~ 3600 MHz</td><td>3.2×1.6 mm</td><td>LFCN-3750</td></tr>
+              <tr><td>21</td><td>GLLPF-3800-32-16</td><td>DC ~ 4000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-3800</td></tr>
+              <tr><td>22</td><td>GLLPF-4400-32-16</td><td>DC ~ 4400 MHz</td><td>3.2×1.6 mm</td><td>LFCN-4400</td></tr>
+              <tr><td>23</td><td>GLLPF-5000-32-16</td><td>DC ~ 5000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-5000</td></tr>
+              <tr><td>24</td><td>GLLPF-5500-32-16</td><td>DC ~ 5500 MHz</td><td>3.2×1.6 mm</td><td>LFCN-5500</td></tr>
+              <tr><td>25</td><td>GLLPF-5850-32-16</td><td>DC ~ 5850 MHz</td><td>3.2×1.6 mm</td><td>LFCN-5800</td></tr>
+              <tr><td>26</td><td>GLLPF-6000-32-16</td><td>DC ~ 6000 MHz</td><td>3.2×1.6 mm</td><td>LFCN-6000</td></tr>
+              <tr><td>27</td><td>GLLPF-6400-32-16</td><td>DC ~ 6400 MHz</td><td>3.2×1.6 mm</td><td>LFCN-6400</td></tr>
+              <tr><td>28</td><td>GLLPF-6700-32-16</td><td>DC ~ 6700 MHz</td><td>3.2×1.6 mm</td><td>LFCN-6700</td></tr>
+              <tr><td>29</td><td>GLLPF-7200-32-16</td><td>DC ~ 7200 MHz</td><td>3.2×1.6 mm</td><td>LFCN-7200</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 另有 LTCC 高通滤波器、薄膜带通滤波器、腔体滤波器、LC滤波器等系列，如需完整选型手册请联系我们。</p>
+        <div style="margin-top:20px;">
+          <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📊 典型产品实测 S 参数曲线</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-100 (DC~100 MHz)</p>
+              <img src="images/perf-lpf.png" alt="GLLPF-100 性能曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-200 (DC~200 MHz)</p>
+              <img src="images/filter_image14.jpeg" alt="GLLPF-200 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-400 (DC~400 MHz)</p>
+              <img src="images/filter_image15.jpeg" alt="GLLPF-400 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-575 (DC~600 MHz)</p>
+              <img src="images/filter_image16.jpeg" alt="GLLPF-575 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-800 (DC~800 MHz)</p>
+              <img src="images/filter_image17.jpeg" alt="GLLPF-800 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLLPF-1000 (DC~1000 MHz)</p>
+              <img src="images/filter_image18.jpeg" alt="GLLPF-1000 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BPF panel -->
+      <div id="tab-bpf" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 带通滤波器（BPF）选型清单，频率覆盖 86 MHz ~ 41 GHz，含 5G毫米波（24~41GHz）频段。遵循 GJB9152-2017 标准，SMD贴片封装，功率 ≤2W。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr><th>序号</th><th>型号</th><th>通带频率</th><th>封装尺寸</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>GLBPF-86-94-45-32</td><td>86 ~ 94 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>2</td><td>GLBPF-230-350-45-32</td><td>230 ~ 350 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>3</td><td>GLBPF-250-350-45-32</td><td>250 ~ 350 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>4</td><td>GLBPF-270-450-80-50</td><td>270 ~ 450 MHz</td><td>8.0×5.0 mm</td></tr>
+              <tr><td>5</td><td>GLBPF-330-450-45-32</td><td>330 ~ 450 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>6</td><td>GLBPF-275-475-45-32</td><td>275 ~ 475 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>7</td><td>GLBPF-550-950-45-32</td><td>550 ~ 950 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>8</td><td>GLBPF-580-820-45-32</td><td>580 ~ 820 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>9</td><td>GLBPF-700-900-45-32</td><td>700 ~ 900 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>10</td><td>GLBPF-800-1400-45-32</td><td>800 ~ 1400 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>11</td><td>GLBPF-1200-1600-45-32</td><td>1200 ~ 1600 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>12</td><td>GLBPF-1300-2300-45-32</td><td>1300 ~ 2300 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>13</td><td>GLBPF-1350-1850-45-32</td><td>1350 ~ 1850 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>14</td><td>GLBPF-1650-1950-45-32</td><td>1650 ~ 1950 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>15</td><td>GLBPF-1650-3150-45-32</td><td>1650 ~ 3150 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>16</td><td>GLBPF-1700-1900-45-32</td><td>1700 ~ 1900 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>17</td><td>GLBPF-1900-2300-45-32</td><td>1900 ~ 2300 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>18</td><td>GLBPF-2000-2400-90-45</td><td>2000 ~ 2400 MHz</td><td>9.0×4.5 mm</td></tr>
+              <tr><td>19</td><td>GLBPF-2200-2600-45-32</td><td>2200 ~ 2600 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>20</td><td>GLBPF-3510-3550-45-25</td><td>3510 ~ 3550 MHz（5G N78）</td><td>4.5×2.5 mm</td></tr>
+              <tr><td>21</td><td>GLBPF-4100-4500-45-32</td><td>4100 ~ 4500 MHz</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>22</td><td>GLBPF-5100-5300-32-25</td><td>5100 ~ 5300 MHz</td><td>3.2×2.5 mm</td></tr>
+              <tr><td>23</td><td>GLBPF-7600-8500-32-25</td><td>7600 ~ 8500 MHz（X波段）</td><td>3.2×2.5 mm</td></tr>
+              <tr><td>24</td><td>GLBPF-9200-10400-32-25</td><td>9200 ~ 10400 MHz（X波段）</td><td>3.2×2.5 mm</td></tr>
+              <tr><td>25</td><td>GLBPF-24250-27250-45-32</td><td>24250 ~ 27250 MHz（5G mmWave）</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>26</td><td>GLBPF-24250-27250-25-16</td><td>24250 ~ 27250 MHz（5G mmWave）</td><td>2.5×1.6 mm</td></tr>
+              <tr><td>27</td><td>GLBPF-26500-29500-45-32</td><td>26500 ~ 29500 MHz（Ka波段）</td><td>4.5×3.2 mm</td></tr>
+              <tr><td>28</td><td>GLBPF-26500-29500-20-12</td><td>26500 ~ 29500 MHz（Ka波段）</td><td>2.0×1.2 mm</td></tr>
+              <tr><td>29</td><td>GLBPF-30000-35000-20-12</td><td>30 ~ 35 GHz（Ka波段）</td><td>2.0×1.2 mm</td></tr>
+              <tr><td>30</td><td>GLBPF-35000-41000-20-12</td><td>35 ~ 41 GHz（Ka/V波段）</td><td>2.0×1.2 mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名规则：GL-公司前缀 / L-LTCC工艺 / BPF-带通滤波器 / 通带频率(MHz) / 尺寸(mm)。支持 5G Sub-6G、X波段、Ka波段等。</p>
+        <div style="margin-top:20px;">
+          <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📊 典型产品实测 S 参数曲线</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-1250-1850 (1.25~1.85 GHz)</p>
+              <img src="images/filter_image20.jpeg" alt="GLBPF-1250-1850 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-1650-1950 (1.65~1.95 GHz)</p>
+              <img src="images/perf-bpf.png" alt="GLBPF-1650-1950 性能曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-2500-3700 (2.5~3.7 GHz)</p>
+              <img src="images/filter_image26.jpeg" alt="GLBPF-2500-3700 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-4100-5300 (4.1~5.3 GHz)</p>
+              <img src="images/filter_image31.jpeg" alt="GLBPF-4100-5300 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-7600-8500 X波段</p>
+              <img src="images/perf-xband.png" alt="GLBPF-7600-8500 X波段性能" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-24250-27500 5G mmWave</p>
+              <img src="images/perf-mmwave.png" alt="GLBPF-24250-27500 mmWave性能" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-24250-27500 仿真曲线</p>
+              <img src="images/filter_image42.png" alt="GLBPF-24250-27500 仿真S参数" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-26500-29500 Ka波段</p>
+              <img src="images/perf-ka2.png" alt="GLBPF-26500-29500 Ka波段性能" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-30000-35000 Ka波段 仿真</p>
+              <img src="images/filter_image46.png" alt="GLBPF-30000-35000 仿真S参数" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLBPF-35000-41000 Ka/V波段</p>
+              <img src="images/perf-ka.png" alt="GLBPF-35000-41000 Ka波段性能" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px;">
+          <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📐 封装焊盘尺寸图</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">4.5×3.2mm 封装</p>
+              <img src="images/filter_image39.png" alt="4.5×3.2mm封装尺寸图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">2.56×1.56mm 封装</p>
+              <img src="images/filter_image41.png" alt="2.56×1.56mm封装尺寸图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">通用 BPF 封装参考</p>
+              <img src="images/bpf-footprint.png" alt="BPF通用封装尺寸图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HPF panel -->
+      <div id="tab-hpf" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 高通滤波器（HPF）选型清单，频率覆盖 1000 MHz ~ 6300 MHz，可直接对标 Mini-Circuits HFCN 系列。遵循 GJB9152-2017 标准，1206 封装（3.2×1.6mm），功率 ≤2W，温度 -55°C~+125°C。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr><th>序号</th><th>型号</th><th>截止频率</th><th>封装尺寸</th><th>对标 Mini-Circuits</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>GLHPF-1000-32-16</td><td>≥ 1000 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1000</td></tr>
+              <tr><td>2</td><td>GLHPF-1100-32-16</td><td>≥ 1100 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1100</td></tr>
+              <tr><td>3</td><td>GLHPF-1150-32-16</td><td>≥ 1150 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1150</td></tr>
+              <tr><td>4</td><td>GLHPF-1300-32-16</td><td>≥ 1300 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1300</td></tr>
+              <tr><td>5</td><td>GLHPF-1500-32-16</td><td>≥ 1500 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1500</td></tr>
+              <tr><td>6</td><td>GLHPF-1600-32-16</td><td>≥ 1600 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1600</td></tr>
+              <tr><td>7</td><td>GLHPF-1760-32-16</td><td>≥ 1760 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1760</td></tr>
+              <tr><td>8</td><td>GLHPF-1810-32-16</td><td>≥ 1810 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1810</td></tr>
+              <tr><td>9</td><td>GLHPF-1910-32-16</td><td>≥ 1910 MHz</td><td>3.2×1.6 mm</td><td>HFCN-1910</td></tr>
+              <tr><td>10</td><td>GLHPF-2000-32-16</td><td>≥ 2000 MHz</td><td>3.2×1.6 mm</td><td>HFCN-2000</td></tr>
+              <tr><td>11</td><td>GLHPF-2100-32-16</td><td>≥ 2100 MHz</td><td>3.2×1.6 mm</td><td>HFCN-2100</td></tr>
+              <tr><td>12</td><td>GLHPF-2275-32-16</td><td>≥ 2275 MHz</td><td>3.2×1.6 mm</td><td>HFCN-2275</td></tr>
+              <tr><td>13</td><td>GLHPF-2700-32-16</td><td>≥ 2700 MHz</td><td>3.2×1.6 mm</td><td>HFCN-2700</td></tr>
+              <tr><td>14</td><td>GLHPF-3100-32-16</td><td>≥ 3100 MHz</td><td>3.2×1.6 mm</td><td>HFCN-3100</td></tr>
+              <tr><td>15</td><td>GLHPF-3500-32-16</td><td>≥ 3500 MHz</td><td>3.2×1.6 mm</td><td>HFCN-3500</td></tr>
+              <tr><td>16</td><td>GLHPF-3800-32-16</td><td>≥ 3800 MHz</td><td>3.2×1.6 mm</td><td>HFCN-3800</td></tr>
+              <tr><td>17</td><td>GLHPF-4400-32-16</td><td>≥ 4400 MHz</td><td>3.2×1.6 mm</td><td>HFCN-4400</td></tr>
+              <tr><td>18</td><td>GLHPF-4600-32-16</td><td>≥ 4600 MHz</td><td>3.2×1.6 mm</td><td>HFCN-4600</td></tr>
+              <tr><td>19</td><td>GLHPF-5050-32-16</td><td>≥ 5050 MHz</td><td>3.2×1.6 mm</td><td>HFCN-5050</td></tr>
+              <tr><td>20</td><td>GLHPF-5500-32-16</td><td>≥ 5500 MHz</td><td>3.2×1.6 mm</td><td>HFCN-5500</td></tr>
+              <tr><td>21</td><td>GLHPF-6300-32-16</td><td>≥ 6300 MHz</td><td>3.2×1.6 mm</td><td>HFCN-6010</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名规则：GL-公司前缀 / L-LTCC工艺 / HPF-高通滤波器 / 截止频率(MHz) / 尺寸(mm)。可直接替代 Mini-Circuits HFCN 系列。</p>
+        <div style="margin-top:20px;">
+          <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📊 典型产品实测 S 参数曲线</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLHPF-1000 (≥1000 MHz)</p>
+              <img src="images/filter_image19.jpeg" alt="GLHPF-1000 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLHPF-1600 (≥1600 MHz)</p>
+              <img src="images/filter_image22.jpeg" alt="GLHPF-1600 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLHPF-2000 (≥2000 MHz)</p>
+              <img src="images/filter_image24.jpeg" alt="GLHPF-2000 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLHPF-3100 (≥3100 MHz)</p>
+              <img src="images/filter_image29.jpeg" alt="GLHPF-3100 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+            <div>
+              <p style="font-size:12px;color:var(--text-light);margin-bottom:6px;text-align:center;">GLHPF-3500 (≥3500 MHz)</p>
+              <img src="images/filter_image30.jpeg" alt="GLHPF-3500 S参数曲线" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thin Film BPF panel -->
+      <div id="tab-thinfilm" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">薄膜带通滤波器采用先进的薄膜电路工艺，产品具备高 Q 值、低插损及优良的传输截止特性，可靠性可直接对标国际一线品牌。默认采用金线键合互联，公司提供赫兹级精度定制方案，适合射频小型化系统集成。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr><th>序号</th><th>型号</th><th>通带频率</th><th>封装尺寸</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>GBBPF-3200-4200-45-32</td><td>3.2 ~ 4.2 GHz</td><td>9.3×6.7 mm</td></tr>
+              <tr><td>2</td><td>GBBPF-6000-18000-45-32</td><td>6 ~ 18 GHz（超宽带）</td><td>8.0×5.0 mm</td></tr>
+              <tr><td>3</td><td>GBBPF-12000-13000-45-32</td><td>12 ~ 13 GHz（Ku波段）</td><td>7.0×2.5 mm</td></tr>
+              <tr><td>4</td><td>GBBPF-16000-18000-40-40</td><td>16 ~ 18 GHz（Ku波段）</td><td>4.0×4.0 mm</td></tr>
+              <tr><td>5</td><td>GBBPF-36000-40000-45-32</td><td>36 ~ 40 GHz（Ka波段）</td><td>6.8×4.9 mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名规则：G-公司前缀 / B-薄膜工艺 / BPF-带通滤波器 / 通带频率(MHz) / 尺寸(mm)。支持 Ku/Ka 波段定制。如需军工级高可靠方案请联系我们。</p>
+      </div>
+
+      <!-- Power Divider panel -->
+      <div id="tab-divider" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 2路功分器选型清单。产品遵循 GJB9152-2017 标准，标准 1206 封装（3.2×1.6mm），功率 ≤2W，阻抗 50Ω，工作温度 -55°C~+125°C。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>型号</th>
+                <th>工作频率</th>
+                <th>封装尺寸</th>
+                <th>对标 Mini-Circuits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>GLLPD-900-1200-32-16</td><td>900 ~ 1200 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-11</td></tr>
+              <tr><td>2</td><td>GLLPD-1100-1500-32-16</td><td>1100 ~ 1500 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-15</td></tr>
+              <tr><td>3</td><td>GLLPD-1400-1900-32-16</td><td>1400 ~ 1900 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-19</td></tr>
+              <tr><td>4</td><td>GLLPD-1800-2300-32-16</td><td>1800 ~ 2300 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-22</td></tr>
+              <tr><td>5</td><td>GLLPD-2200-2800-32-16</td><td>2200 ~ 2800 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-27</td></tr>
+              <tr><td>6</td><td>GLLPD-2700-3800-32-16</td><td>2700 ~ 3800 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-35</td></tr>
+              <tr><td>7</td><td>GLLPD-3700-4300-32-16</td><td>3700 ~ 4300 MHz</td><td>3.2×1.6 mm</td><td>SCN-2-45</td></tr>
+              <tr><td>8</td><td>GLLPD-100-3000-80-60</td><td>100 ~ 3000 MHz</td><td>8.0×6.0 mm</td><td>宽带大尺寸型</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名规则：GL-公司前缀 / L-LTCC工艺 / PD-功分器 / 通带频率范围(MHz) / 尺寸(mm)。如需定制频段请联系我们。</p>
+        <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">电路拓扑图</p>
+            <img src="images/divider-schematic.png" alt="功分器拓扑图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">焊盘尺寸图（3.2×1.6mm）</p>
+            <img src="images/divider-footprint.png" alt="功分器焊盘图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Coupler panel -->
+      <div id="tab-coupler" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">宽带定向耦合器系列，频率覆盖 100 MHz ~ 6000 MHz，提供多种耦合度选择。产品适用于功率监测、信号采样、射频测试及通信系统中的定向功率检测等应用场景。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>类型</th>
+                <th>频率范围</th>
+                <th>耦合度</th>
+                <th>封装</th>
+                <th>特点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>宽带定向耦合器</td><td>100 ~ 1000 MHz</td><td>10 dB</td><td>PCB/LTCC</td><td>高方向性 ≥20dB，主路插损 ≤0.5dB</td></tr>
+              <tr><td>宽带定向耦合器</td><td>100 ~ 3000 MHz</td><td>3 dB</td><td>PCB/LTCC</td><td>等功率分配，幅度平衡 ±0.5dB</td></tr>
+              <tr><td>宽带定向耦合器</td><td>500 ~ 3000 MHz</td><td>6 dB</td><td>PCB/LTCC</td><td>低插损，宽带宽，高隔离度</td></tr>
+              <tr><td>宽带定向耦合器</td><td>800 ~ 4000 MHz</td><td>10 dB</td><td>LTCC SMD</td><td>小型化，适合集成射频前端</td></tr>
+              <tr><td>宽带定向耦合器</td><td>1000 ~ 6000 MHz</td><td>20 dB</td><td>LTCC SMD</td><td>高方向性，适合功率监测</td></tr>
+              <tr><td>定制耦合器</td><td>按需定制</td><td>按需定制</td><td>多种封装</td><td>按客户需求设计频率、耦合度与指标</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 耦合器产品可根据客户系统需求提供定制化设计（频率/耦合度/封装），欢迎提供技术规格进行评估。完整产品手册请联系我们获取。</p>
+      </div>
+
+      <!-- Bridge panel -->
+      <div id="tab-bridge" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 混合电桥系列产品，适用于相移控制、功率合成、I/Q调制等应用场合。如需完整选型手册请联系我们。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>类型</th>
+                <th>频率范围</th>
+                <th>封装</th>
+                <th>特点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>90° 正交混合电桥</td><td>800 ~ 4000 MHz</td><td>LTCC SMD</td><td>相位差 90°±5°，幅度一致性 ±0.5 dB</td></tr>
+              <tr><td>180° 混合电桥</td><td>800 ~ 3500 MHz</td><td>LTCC SMD</td><td>宽带宽，高隔离度，低插损</td></tr>
+              <tr><td>定制电桥</td><td>按需定制</td><td>多种封装</td><td>按客户需求设计频率/指标</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 电桥产品可根据客户需求提供定制化设计，欢迎提供技术规格进行评估。</p>
+        <div style="margin-top:20px;">
+          <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">典型封装尺寸参考（4.5×3.2mm）</p>
+          <img src="images/bpf-footprint.png" alt="封装尺寸图" style="max-width:400px;width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:28px;">
+        <a href="#contact" class="btn-primary" style="display:inline-block;">📩 获取完整产品手册</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section id="quality">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">QUALITY</div>
+      <h2>质量保证</h2>
+      <div class="divider"></div>
+      <p>我们将质量视为企业生命线，从原材料采购到产品出厂，全流程严格把控</p>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-card fade-in">
+        <div class="icon">🏅</div>
+        <h3>严格质量管控</h3>
+        <p>建立完善的质量管理体系，从原材料进货、生产过程到成品出厂，每个环节均有严格的检验标准和操作规范，确保产品质量的稳定可靠。</p>
+      </div>
+      <div class="quality-card fade-in">
+        <div class="icon">🔍</div>
+        <h3>100% 出厂检测</h3>
+        <p>所有产品在出厂前均经过100%测试，使用专业射频测试仪器对关键性能参数进行逐一验证，彻底杜绝不合格品流入市场，保障客户利益。</p>
+      </div>
+      <div class="quality-card fade-in">
+        <div class="icon">📋</div>
+        <h3>完整质量追溯</h3>
+        <p>建立完善的产品质量追溯体系，每件产品均有完整的生产记录和测试数据档案，可随时查询和追溯，为客户提供有力的质量保障。</p>
+      </div>
+      <div class="quality-card fade-in">
+        <div class="icon">🛡️</div>
+        <h3>售后保障承诺</h3>
+        <p>产品质保期内，出现任何质量问题，我们承诺免费维修或更换。同时提供完善的技术支持，帮助客户解决使用过程中的技术难题。</p>
+      </div>
+      <div class="quality-card fade-in">
+        <div class="icon">⚙️</div>
+        <h3>先进 LTCC 生产工艺</h3>
+        <p>采用 LTCC（低温共烧陶瓷）先进制造技术，工艺覆盖 Blanking → Via Punching → Conductor Printing → Co-Firing → Final Inspection 全流程，确保产品的一致性与可靠性。</p>
+        <img src="images/ltcc-process.png" alt="LTCC工艺流程" style="width:100%;border-radius:6px;margin-top:14px;" loading="lazy" />
+      </div>
+      <div class="quality-card fade-in">
+        <div class="icon">🎯</div>
+        <h3>定制化服务</h3>
+        <p>针对客户的特殊需求，提供定制化产品设计与开发服务。专业工程师团队与客户深度沟通，提供最优的技术方案，快速响应，缩短交货周期。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section id="applications">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">APPLICATIONS</div>
+      <h2>应用领域</h2>
+      <div class="divider"></div>
+      <p>产品广泛应用于多个高端技术领域，为各行业提供可靠的微波解决方案</p>
+    </div>
+    <div class="app-grid fade-in">
+      <div class="app-card">
+        <div class="icon">📱</div>
+        <h4>5G 通信</h4>
+        <p>基站滤波、信号处理，支持5G/4G多频段通信系统</p>
+      </div>
+      <div class="app-card">
+        <div class="icon">✈️</div>
+        <h4>商业航空</h4>
+        <p>机载通信、导航系统，满足航空级高可靠性要求</p>
+      </div>
+      <div class="app-card">
+        <div class="icon">🔭</div>
+        <h4>测试仪表</h4>
+        <p>频谱分析仪、矢量网络分析仪等测试设备配套</p>
+      </div>
+      <div class="app-card">
+        <div class="icon">📡</div>
+        <h4>雷达系统</h4>
+        <p>雷达前端信号处理，支持多种频段雷达应用</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <!-- Left: contact info -->
+      <div class="contact-info fade-in">
+        <div class="section-tag" style="background:rgba(255,255,255,0.15);color:#fff;">CONTACT US</div>
+        <h2 style="margin-top:12px;">联系我们</h2>
+        <p>如果您对我们的产品感兴趣，或有定制需求，欢迎随时与我们联系。我们将在最短时间内回复您。</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon">👤</div>
+            <div class="ci-text">
+              <h4>联系人</h4>
+              <p>孙经理</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <h4>公司地址</h4>
+              <p>贵州省遵义市汇川区上海路街道<br/>上海路新长征尊城8号楼1203厂房</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 直联按钮 -->
+        <div class="direct-btns">
+          <a href="tel:18656800727" class="direct-btn direct-btn-call">
+            <span class="db-icon">📞</span>
+            <span class="db-text">
+              <span class="db-label">立即拨打</span>
+              <span class="db-val">186-5680-0727</span>
+            </span>
+          </a>
+          <a href="tel:17785663396" class="direct-btn direct-btn-call">
+            <span class="db-icon">📞</span>
+            <span class="db-text">
+              <span class="db-label">立即拨打</span>
+              <span class="db-val">177-8566-3396</span>
+            </span>
+          </a>
+          <button class="direct-btn direct-btn-wx" onclick="copyWechat(this)">
+            <span class="db-icon">💬</span>
+            <span class="db-text">
+              <span class="db-label">微信号（点击复制）</span>
+              <span class="db-val">18656800727</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: message form -->
+      <div class="contact-form fade-in">
+        <h3>📋 填写需求</h3>
+        <p style="font-size:13px;color:#888;margin-bottom:20px;">填写后点击按钮，内容将自动复制到剪贴板，打开微信搜索 <strong style="color:var(--primary)">18656800727</strong> 即可粘贴发送。</p>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>您的姓名 *</label>
+              <input type="text" name="name" placeholder="请输入姓名" required />
+            </div>
+            <div class="form-group">
+              <label>联系电话 *</label>
+              <input type="tel" name="phone" placeholder="请输入手机号" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>公司名称</label>
+              <input type="text" name="company" placeholder="请输入公司名称（选填）" />
+            </div>
+            <div class="form-group">
+              <label>感兴趣的产品</label>
+              <select name="product">
+                <option value="">请选择</option>
+                <option>滤波器系列</option>
+                <option>功分器系列</option>
+                <option>耦合器系列</option>
+                <option>电桥系列</option>
+                <option>其他 / 定制需求</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full" style="margin-bottom:14px;">
+            <label>需求描述 *</label>
+            <textarea name="message" placeholder="请描述您的需求，例如：产品型号、频率范围、数量等..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit" id="submitBtn">复制需求 · 去微信发送</button>
+          <p class="form-note">点击后内容自动复制，打开微信搜索 18656800727 粘贴即可</p>
+        </form>
+
+        <!-- 成功提示 -->
+        <div id="copySuccess" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:20px;margin-top:16px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">✅</div>
+          <p style="color:#166534;font-weight:700;font-size:16px;margin-bottom:6px;">需求已复制到剪贴板！</p>
+          <p style="color:#15803d;font-size:14px;margin-bottom:14px;">打开微信，搜索号码 <strong>18656800727</strong>，粘贴后发送即可</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button onclick="copyWechat(this)" style="background:#07c160;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;">再次复制微信号</button>
+            <button onclick="document.getElementById('copySuccess').style.display='none';document.getElementById('contactForm').style.display='block'" style="background:transparent;color:#666;border:1px solid #ddd;padding:10px 20px;border-radius:6px;font-size:14px;cursor:pointer;">重新填写</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="logo.png" alt="logo" onerror="this.style.display='none'" />
+        <span>贵州理科微波科技有限公司</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">首页</a>
+        <a href="#about">关于我们</a>
+        <a href="#products">产品中心</a>
+        <a href="#quality">质量保证</a>
+        <a href="#contact">联系我们</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>版权所有 © 2026 贵州理科微波科技有限公司 · 保留所有权利</p>
+      <p style="margin-top:6px;">地址：贵州省遵义市汇川区上海路街道上海路新长征尊城8号楼1203厂房 &nbsp;|&nbsp; 联系人：孙经理 &nbsp;|&nbsp; 电话：18656800727</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + cur || (cur === '' && a.getAttribute('href') === '#')) a.classList.add('active');
+    });
+  });
+
+  function getPageBasePath() {
+    const path = window.location.pathname || '/';
+    if (path.endsWith('/')) return path;
+    // If URL points to a file (e.g. /index.html), use its directory.
+    if (/\.[a-zA-Z0-9]+$/.test(path)) return path.slice(0, path.lastIndexOf('/') + 1);
+    // If URL is a route without trailing slash (e.g. /h5), treat it as a directory.
+    return path + '/';
+  }
+
+  function normalizeLocalAssetPath(src) {
+    if (!src) return src;
+    if (/^(https?:|data:|blob:|\/\/|\/)/i.test(src)) return src;
+    const basePath = getPageBasePath();
+    return basePath + src.replace(/^\.?\//, '');
+  }
+
+  function getImageRetryCandidates(src) {
+    if (!src) return [];
+    if (/^(https?:|data:|blob:|\/\/)/i.test(src)) return [src];
+    if (/^\//.test(src)) return [src];
+
+    const clean = src.replace(/^\.?\//, '');
+    const isImagePath = clean.startsWith('images/');
+    const fileName = isImagePath ? clean.slice('images/'.length) : clean;
+    const basePath = getPageBasePath();
+    const candidates = [
+      basePath + clean,
+      basePath + 'images/' + fileName,
+      './' + clean,
+      'images/' + fileName,
+      '/images/' + fileName,
+      '/h5/images/' + fileName
+    ];
+
+    // Remove duplicates while preserving order.
+    return [...new Set(candidates)];
+  }
+
+  function bindImageFallback(img) {
+    if (!img || img.dataset.fallbackBound === '1') return;
+    img.dataset.fallbackBound = '1';
+    img.dataset.originSrc = img.getAttribute('src') || '';
+
+    img.addEventListener('error', () => {
+      const origin = img.dataset.originSrc || img.getAttribute('src') || '';
+      const candidates = getImageRetryCandidates(origin);
+      const tried = (img.dataset.fallbackTried || '').split('|').filter(Boolean);
+      const next = candidates.find((c) => !tried.includes(c));
+      if (!next) return;
+      tried.push(next);
+      img.dataset.fallbackTried = tried.join('|');
+      img.src = next;
+    });
+  }
+
+  function ensurePanelImagesLoaded(panel) {
+    if (!panel) return;
+    // Some WebViews don't request lazy images inside hidden tabs; force load when activated.
+    panel.querySelectorAll('img').forEach((img) => {
+      bindImageFallback(img);
+      if (img.loading === 'lazy') img.loading = 'eager';
+      const src = img.getAttribute('src');
+      const normalized = normalizeLocalAssetPath(src);
+      if (normalized && normalized !== src) img.src = normalized;
+      if (normalized && !img.complete) img.src = normalized;
+    });
+  }
+
+  // Tab switching
+  function switchTab(name) {
+    const names = ['lpf', 'bpf', 'hpf', 'thinfilm', 'divider', 'coupler', 'bridge'];
+    document.querySelectorAll('.prod-tab').forEach((t, i) => {
+      t.classList.toggle('active', names[i] === name);
+    });
+    document.querySelectorAll('.prod-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('tab-' + name);
+    if (panel) panel.classList.add('active');
+    ensurePanelImagesLoaded(panel);
+    setTimeout(() => { document.getElementById('prod-detail').scrollIntoView({behavior:'smooth', block:'start'}); }, 50);
+  }
+  document.querySelectorAll('img[src]').forEach((img) => {
+    bindImageFallback(img);
+    const src = img.getAttribute('src');
+    const normalized = normalizeLocalAssetPath(src);
+    if (normalized && normalized !== src) img.src = normalized;
+  });
+  ensurePanelImagesLoaded(document.querySelector('.prod-panel.active'));
+
+  // Mobile menu
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('mobileNav');
+    btn.classList.toggle('open');
+    nav.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburger');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Copy WeChat number
+  function copyWechat(btn) {
+    navigator.clipboard.writeText('18656800727').then(() => {
+      const orig = btn.innerHTML;
+      btn.style.background = '#06ad56';
+      btn.querySelector && btn.querySelector('.db-val') 
+        ? (btn.querySelector('.db-label').textContent = '已复制 ✓') 
+        : (btn.textContent = '已复制 ✓');
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2000);
+    }).catch(() => {
+      prompt('请手动复制微信号：', '18656800727');
+    });
+  }
+
+  // Form submit — copy content to clipboard
+  function submitForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const company = form.company.value.trim();
+    const product = form.product.value;
+    const message = form.message.value.trim();
+
+    const content = [
+      '【贵州理科微波 — 产品咨询】',
+      `姓名：${name}`,
+      `电话：${phone}`,
+      company ? `公司：${company}` : '',
+      product ? `意向产品：${product}` : '',
+      `\n需求描述：\n${message}`,
+    ].filter(Boolean).join('\n');
+
+    navigator.clipboard.writeText(content).then(() => {
+      form.style.display = 'none';
+      document.getElementById('copySuccess').style.display = 'block';
+    }).catch(() => {
+      // Fallback: show in a textarea
+      const ta = document.createElement('textarea');
+      ta.value = content;
+      ta.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80vw;max-width:500px;height:200px;z-index:9999;padding:12px;border-radius:8px;border:2px solid #1a3c6e;font-size:13px;';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      form.style.display = 'none';
+      document.getElementById('copySuccess').style.display = 'block';
+    });
+  }
+</script>
+</body>
+</html>
