@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LTCC 气体与压力传感器 - 贵州理科微波</title>
+  <style>
+    :root { --primary: #1a3c6e; --accent: #e84c3d; --text: #333; --text-light: #666; --border: #e0e6ef; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; color: var(--text); background: #f5f7fa; line-height: 1.7; }
+    .sensor-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .sensor-header button {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .sensor-header button:hover { background: rgba(255,255,255,0.12); }
+    .sensor-header h1 { font-size: 17px; font-weight: 600; flex: 1; }
+    .sensor-inner { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+    .sensor-intro {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(26,60,110,0.06);
+    }
+    .sensor-intro h2 { color: var(--primary); font-size: 22px; margin-bottom: 12px; }
+    .sensor-intro p { color: var(--text-light); font-size: 15px; }
+    .sensor-block {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .sensor-block h3 {
+      color: var(--primary);
+      font-size: 20px;
+      margin-bottom: 8px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .sensor-block .sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+    .sensor-block img {
+      width: 100%;
+      max-width: 720px;
+      display: block;
+      margin: 0 auto 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .sensor-block ul { margin: 12px 0 0 20px; font-size: 14px; color: var(--text); }
+    .sensor-block li { margin-bottom: 8px; }
+    .sensor-footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .sensor-footer a { color: var(--primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header class="sensor-header">
+    <button type="button" id="backBtn">← 返回</button>
+    <h1>LTCC 气体与压力传感器</h1>
+  </header>
+
+  <main class="sensor-inner">
+    <section class="sensor-intro">
+      <h2>LTCC 传感器产品线</h2>
+      <p>基于 LTCC（低温共烧陶瓷）工艺，公司推出气体传感器与压力传感器解决方案，涵盖 LC 无源无线气体传感结构、多层 LTCC 微流控检测模组及陶瓷扩散膜电化学敏感探头等方向，适用于气体检测、微流控分析及汽车尾气等应用场景。欢迎联系我们获取详细技术方案与定制开发支持。</p>
+    </section>
+
+    <section class="sensor-block">
+      <h3>LTCC 气体传感器</h3>
+      <p class="sub">LC 无源无线气体传感器 · 螺旋电感与叉指电容一体化结构</p>
+      <img src="images/sensor_image1.png" alt="LC 气体传感器结构示意图与仿真模型" loading="lazy" />
+      <ul>
+        <li>采用 LTCC 工艺集成螺旋电感与叉指电容，构成 LC 谐振式气体敏感单元</li>
+        <li>支持无源无线检测方案，可与读出头线圈耦合实现远程激励与信号读取</li>
+        <li>结构小型化，适合嵌入式气体检测与实验室传感研究</li>
+        <li>可根据敏感膜材料与目标气体类型进行定制设计</li>
+      </ul>
+    </section>
+
+    <section class="sensor-block">
+      <h3>LTCC 压力传感器</h3>
+      <p class="sub">多层 LTCC 叠层 · 微流道与电极一体化封装</p>
+      <img src="images/sensor_image2.png" alt="LTCC 多层压力传感器结构分解图" loading="lazy" />
+      <img src="images/sensor_image3.png" alt="LTCC 压力传感器模组实物" loading="lazy" />
+      <ul>
+        <li>多层 LTCC 陶瓷叠层结构，集成缓冲池、微流道（约 1 mm）及电极腔体</li>
+        <li>含工作电极、对电极、参比电极（Ag/AgCl、Au 等）及陶瓷扩散膜气体入口</li>
+        <li>模组化设计，含气路接口与电路引出，便于系统集成</li>
+        <li>适用于液体微流控、压力/电化学检测等应用开发</li>
+      </ul>
+    </section>
+
+    <section class="sensor-block">
+      <h3>陶瓷敏感探头</h3>
+      <p class="sub">适用于电化学气体检测的陶瓷扩散膜探头</p>
+      <img src="images/sensor_image4.png" alt="LTCC 传感器芯片实物（一元硬币参照）" loading="lazy" />
+      <img src="images/sensor_image5.png" alt="陶瓷探头泵单元信号原理图" loading="lazy" />
+      <ul>
+        <li>基于 ZrO₂ 等陶瓷电解质层的多层探头结构，支持 O²⁻ 离子传导</li>
+        <li>适用于尾气检测、参考空气通道等电化学传感场景</li>
+        <li>芯片级小型封装，可与泵单元及信号采集电路配合使用</li>
+        <li>支持按客户检测指标与封装要求进行定制</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="sensor-footer">
+    <p>如需完整技术资料或样品咨询，请 <a href="index.html#contact">联系我们</a></p>
+  </footer>
+
+  <script>
+    function goBack() {
+      if (window.opener && !window.opener.closed) {
+        try { window.opener.focus(); } catch (_) {}
+        window.close();
+        return;
+      }
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      location.href = 'index.html#products';
+    }
+    document.getElementById('backBtn').addEventListener('click', goBack);
+  </script>
+</body>
+</html>

@@ -240,6 +240,7 @@
       transition: all 0.3s;
       background: #fff;
     }
+    .prod-card[data-manual] { cursor: pointer; }
     .prod-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--primary); }
     .prod-img {
       background: linear-gradient(135deg, #1a3c6e 0%, #2563a8 100%);
@@ -292,18 +293,34 @@
     .quality-card p { font-size: 14px; color: var(--text-light); line-height: 1.8; }
 
     /* ===== PRODUCT TABLE ===== */
-    .prod-table-wrap { overflow-x: auto; margin-top: 20px; }
+    .prod-table-wrap {
+      max-height: min(420px, 52vh);
+      overflow: auto;
+      margin-top: 20px;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(26, 58, 110, 0.45) #eef0f5;
+    }
+    .prod-table-wrap::-webkit-scrollbar { width: 8px; height: 8px; }
+    .prod-table-wrap::-webkit-scrollbar-track { background: #eef0f5; border-radius: 4px; }
+    .prod-table-wrap::-webkit-scrollbar-thumb { background: rgba(26, 58, 110, 0.45); border-radius: 4px; }
     .prod-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 13px;
     }
     .prod-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
       background: var(--primary);
       color: #fff;
       padding: 10px 12px;
       text-align: left;
       white-space: nowrap;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
     }
     .prod-table td {
       padding: 9px 12px;
@@ -332,6 +349,18 @@
     }
     .prod-panel { display: none; }
     .prod-panel.active { display: block; }
+    .prod-section-title {
+      font-size: 17px;
+      color: var(--primary);
+      font-weight: 700;
+      margin: 28px 0 14px;
+      text-align: center;
+    }
+    .prod-section-title:first-child { margin-top: 0; }
+
+    .prod-links { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .prod-links .prod-link { margin-top: 0; }
+    .prod-link-manual { color: var(--accent) !important; }
 
     /* ===== APPLICATIONS ===== */
     #applications { background: #fff; }
@@ -351,27 +380,34 @@
 
     /* ===== CONTACT ===== */
     #contact { background: linear-gradient(135deg, #0e2a52 0%, #1a3c6e 100%); color: #fff; padding: 72px 40px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-    .contact-info h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
-    .contact-info p { color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 32px; font-size: 15px; }
-    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; }
+    .contact-info h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .contact-info > p { color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; font-size: 16px; }
+    .contact-compact {
+      display: flex;
+      gap: 32px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 18px; flex: 1; min-width: 260px; }
     .contact-item { display: flex; align-items: flex-start; gap: 14px; }
     .contact-item .ci-icon {
-      width: 44px; height: 44px;
+      width: 48px; height: 48px;
       background: rgba(255,255,255,0.12);
-      border-radius: 8px;
+      border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; flex-shrink: 0;
     }
-    .contact-item .ci-text h4 { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
-    .contact-item .ci-text p { font-size: 16px; color: #fff; font-weight: 600; line-height: 1.5; }
+    .contact-item .ci-text h4 { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 5px; font-weight: 500; }
+    .contact-item .ci-text p { font-size: 16px; color: #fff; font-weight: 600; line-height: 1.55; }
     .contact-form {
       background: #fff;
       border-radius: 14px;
       padding: 36px;
       color: var(--text);
     }
-    .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
+    .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .contact-form .form-intro { font-size: 13px; color: #888; margin-bottom: 16px; line-height: 1.5; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group label { font-size: 13px; color: var(--text-light); font-weight: 500; }
@@ -395,38 +431,36 @@
     .form-submit { width: 100%; margin-top: 6px; }
     .form-note { font-size: 12px; color: var(--text-light); margin-top: 12px; text-align: center; }
 
-    /* ===== DIRECT CONTACT BUTTONS ===== */
-    .direct-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
-    .direct-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s;
-      width: 100%;
-      text-align: left;
+    .wechat-qr-wrap {
+      flex-shrink: 0;
+      padding: 18px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      text-align: center;
     }
-    .direct-btn-call {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
+    .wechat-qr-wrap h4 {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      margin-bottom: 12px;
     }
-    .direct-btn-call:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
-    .direct-btn-wx {
-      background: #07c160;
-      color: #fff;
-      border: 1px solid #06ad56;
+    .wechat-qr-wrap img {
+      width: 168px;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 10px;
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
     }
-    .direct-btn-wx:hover { background: #06ad56; transform: translateY(-1px); }
-    .direct-btn .db-icon { font-size: 22px; flex-shrink: 0; }
-    .direct-btn .db-text { display: flex; flex-direction: column; }
-    .direct-btn .db-label { font-size: 12px; opacity: 0.75; }
-    .direct-btn .db-val { font-size: 17px; font-weight: 700; letter-spacing: 0.5px; }
+    .wechat-qr-wrap p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
 
     /* ===== FOOTER ===== */
     footer { background: #0a1e3c; color: rgba(255,255,255,0.65); padding: 40px 40px 24px; }
@@ -477,6 +511,7 @@
       .prod-tabs { gap: 6px; }
       .prod-tab { padding: 7px 12px; font-size: 13px; }
       .contact-form { padding: 24px 20px; }
+      .wechat-qr-wrap { margin: 0 auto; }
       .section-header h2 { font-size: 24px; }
     }
 
@@ -490,8 +525,8 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="inner">
-    <span>📞 18656800727 / 17785663396</span>
-    <span>📧 微信同号</span>
+    <span>📞 17785663396</span>
+    <span>📧 <a href="mailto:technology@likemicrowave.com.cn">technology@likemicrowave.com.cn</a></span>
     <a href="#contact">在线留言</a>
   </div>
 </div>
@@ -533,7 +568,7 @@
   <div class="hero-inner fade-in">
     <div class="hero-badge">专业微波器件供应商</div>
     <h1>精密<span>微波器件</span>解决方案<br/>专注射频无源器件研发与制造</h1>
-    <p>贵州理科微波科技有限公司专注于微波无源器件的研发、生产与销售，产品涵盖滤波器、功分器、耦合器、电桥等，广泛应用于通信、航空、测试仪表等领域。</p>
+    <p>贵州理科微波科技有限公司专注于微波无源器件与 LTCC 传感器的研发、生产与销售，产品涵盖滤波器、功分器、电桥、气体/压力传感器等，广泛应用于通信、航空、测试仪表等领域。</p>
     <div class="hero-btns">
       <a href="#products" class="btn-primary">查看产品</a>
       <a href="#contact" class="btn-outline">联系我们</a>
@@ -572,11 +607,7 @@
       <div class="about-content">
         <h3>专注微波无源器件，服务全球通信系统</h3>
         <p>贵州理科微波科技有限公司专注于微波无源器件的研发、制造与销售，是一家具有自主知识产权的高新技术企业，为全国微波通信系统提供高性能、高可靠的射频无源器件解决方案。</p>
-        <p>公司核心产品涵盖<strong>滤波器、功分器、耦合器、电桥</strong>等关键射频无源器件，覆盖 PCB、LTCC、GaAs、薄膜、陶瓷等多元化工艺平台，实现从器件研发设计、仿真优化到全流程管控、自动化生产的完整技术链条，满足不同频段下小型化、高集成、高可靠的需求。</p>
-        <div style="margin:16px 0;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
-          <img src="images/divider_image4.jpeg" alt="LTCC微波器件产品实物" style="height:80px;width:auto;border-radius:8px;border:1px solid var(--border);background:#fff;padding:4px;" />
-          <span style="font-size:13px;color:var(--text-light);">LTCC 微波无源器件 — SMD贴片封装</span>
-        </div>
+        <p>公司核心产品涵盖<strong>滤波器、功分器、电桥、LTCC 传感器</strong>等关键器件，覆盖 PCB、LTCC、GaAs、薄膜、陶瓷等多元化工艺平台，实现从器件研发设计、仿真优化到全流程管控、自动化生产的完整技术链条，满足不同频段下小型化、高集成、高可靠的需求。</p>
         <p>产品详细规格遵循 <strong>GJB9152-2017</strong> 等国家军工标准规范，可直接对标 Mini-Circuits 等国际主流品牌，广泛应用于通信系统、射频前端、航空装备、高端仪器等领域。</p>
         <div class="about-tags">
           <span class="tag">技术研发</span>
@@ -619,13 +650,13 @@
       <div class="section-tag">PRODUCTS</div>
       <h2>产品中心</h2>
       <div class="divider"></div>
-      <p>公司专注微波无源器件领域，产品覆盖滤波器（85+ 款）、功分器（8 款）、耦合器、电桥等系列，遵循 GJB9152-2017 等国家军工标准规范，可直接对标 Mini-Circuits 等国际品牌</p>
+      <p>公司专注微波器件与 LTCC 传感领域，产品覆盖滤波器（85+ 款）、功分器（8 款）、电桥、气体/压力传感器等系列，遵循 GJB9152-2017 等国家军工标准规范，可直接对标 Mini-Circuits 等国际品牌</p>
     </div>
 
     <!-- Product overview cards -->
     <div class="prod-grid fade-in" style="margin-bottom:52px;grid-template-columns:repeat(4, 1fr);">
-      <div class="prod-card">
-        <div class="prod-img has-img"><img src="images/filter_image4.jpeg" alt="LTCC滤波器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
+      <div class="prod-card" data-manual="filter">
+        <div class="prod-img has-img"><img src="images/bridge_image4.jpeg" alt="LTCC滤波器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
         <div class="prod-body">
           <h3>滤波器系列</h3>
           <p>覆盖 LTCC 低通（29款）/ 带通（30款）/ 高通（21款）、薄膜带通（5款）等系列，封装 1206/1812/0805 多种规格，频率 DC~41GHz，可直接对标 Mini-Circuits LFCN/HFCN 系列。</p>
@@ -636,11 +667,14 @@
             <li>薄膜带通滤波器 · 5 款（3.2~40GHz）</li>
             <li>遵循 GJB9152-2017 标准</li>
           </ul>
-          <a href="#prod-detail" class="prod-link" onclick="switchTab('lpf')">查看选型清单 →</a>
+          <div class="prod-links">
+            <a href="#prod-detail" class="prod-link" onclick="event.stopPropagation(); switchTab('lpf', true)">查看选型清单 →</a>
+            <a href="manual.html?type=filter" class="prod-link prod-link-manual" onclick="event.stopPropagation()">📖 在线预览产品手册</a>
+          </div>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img has-img"><img src="images/divider_image4.jpeg" alt="LTCC功分器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
+      <div class="prod-card" data-manual="divider">
+        <div class="prod-img has-img"><img src="images/bridge_image4.jpeg" alt="LTCC功分器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
         <div class="prod-body">
           <h3>功分器系列</h3>
           <p>LTCC 功率分配器（2路），频率覆盖 900 MHz ~ 4.3 GHz，标准 1206 封装（3.2×1.6mm），也提供宽带 100~3000 MHz 大尺寸型号，可直接对标 Mini-Circuits SCN 系列。</p>
@@ -651,37 +685,46 @@
             <li>功率：≤ 2W，阻抗：50Ω</li>
             <li>工作温度：-55°C ~ +125°C</li>
           </ul>
-          <a href="#prod-detail" class="prod-link" onclick="switchTab('divider')">查看选型清单 →</a>
+          <div class="prod-links">
+            <a href="#prod-detail" class="prod-link" onclick="event.stopPropagation(); switchTab('divider', true)">查看选型清单 →</a>
+            <a href="manual.html?type=divider" class="prod-link prod-link-manual" onclick="event.stopPropagation()">📖 在线预览产品手册</a>
+          </div>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img has-img"><img src="images/ltcc-structure.png" alt="LTCC结构图" loading="lazy" style="background:#f0f4ff;object-fit:contain;padding:20px;" /></div>
+      <div class="prod-card" data-manual="bridge">
+        <div class="prod-img has-img"><img src="images/bridge_image4.jpeg" alt="LTCC电桥产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
         <div class="prod-body">
           <h3>电桥系列</h3>
-          <p>LTCC 混合电桥产品，包含 90° 正交混合电桥和 180° 混合电桥，适用于相移控制、功率合成与分配、I/Q 调制等射频前端电路设计。</p>
+          <p>LTCC 90° 正交混合电桥产品，适用于相移控制、功率合成与分配、I/Q 调制等射频前端电路设计。</p>
           <ul class="prod-features">
-            <li>90° / 180° 混合电桥（LTCC）</li>
+            <li>90° 正交混合电桥（LTCC）</li>
             <li>宽频带，幅相一致性好</li>
             <li>SMD 贴片封装</li>
             <li>标准 50Ω 系统阻抗</li>
             <li>可定制频段与封装形式</li>
           </ul>
-          <a href="#prod-detail" class="prod-link" onclick="switchTab('bridge')">查看选型清单 →</a>
+          <div class="prod-links">
+            <a href="#prod-detail" class="prod-link" onclick="event.stopPropagation(); switchTab('bridge', true)">查看选型清单 →</a>
+            <a href="manual.html?type=bridge" class="prod-link prod-link-manual" onclick="event.stopPropagation()">📖 在线预览产品手册</a>
+          </div>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img has-img"><img src="images/product-cavity.png" alt="耦合器产品" loading="lazy" /></div>
+      <div class="prod-card" data-manual="sensor">
+        <div class="prod-img has-img"><img src="images/sensor_image4.jpeg" alt="LTCC传感器产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
         <div class="prod-body">
-          <h3>耦合器系列</h3>
-          <p>宽带定向耦合器产品，覆盖 100 MHz ~ 6000 MHz 多种耦合度选择（3/6/10/20 dB），适用于功率监测、信号采样、射频测试等应用场景。</p>
+          <h3>传感器系列</h3>
+          <p>基于 LTCC 工艺的气体传感器与压力传感器，涵盖 LC 无源无线气体传感、多层微流控检测模组及陶瓷扩散膜电化学探头等，适用于气体检测、微流控与尾气传感等场景。</p>
           <ul class="prod-features">
-            <li>宽带定向耦合器（PCB/LTCC）</li>
-            <li>频率：100 ~ 6000 MHz</li>
-            <li>耦合度：3/6/10/20 dB 可选</li>
-            <li>高方向性、低主路插损</li>
-            <li>支持定制化频段与指标</li>
+            <li>LTCC 气体传感器（LC 谐振结构）</li>
+            <li>LTCC 压力传感器（多层微流控）</li>
+            <li>陶瓷扩散膜敏感探头</li>
+            <li>支持敏感材料与封装定制</li>
+            <li>模组化方案，便于系统集成</li>
           </ul>
-          <a href="#prod-detail" class="prod-link" onclick="switchTab('coupler')">查看选型清单 →</a>
+          <div class="prod-links">
+            <a href="#prod-detail" class="prod-link" onclick="event.stopPropagation(); switchTab('sensor', true)">查看产品介绍 →</a>
+            <a href="sensor.html" class="prod-link prod-link-manual" onclick="event.stopPropagation()">📖 在线预览技术资料</a>
+          </div>
         </div>
       </div>
     </div>
@@ -690,17 +733,158 @@
     <div id="prod-detail" class="fade-in">
       <h3 style="font-size:20px;color:var(--primary);margin-bottom:20px;font-weight:700;">📋 产品选型清单</h3>
       <div class="prod-tabs">
-        <button class="prod-tab active" onclick="switchTab('lpf')">LTCC 低通滤波器</button>
+        <button class="prod-tab active" onclick="switchTab('5g')">5G 通信频段</button>
+        <button class="prod-tab" onclick="switchTab('6g')">6G 通信频段</button>
+        <button class="prod-tab" onclick="switchTab('satellite')">卫星通信频段</button>
+        <button class="prod-tab" onclick="switchTab('lpf')">LTCC 低通滤波器</button>
         <button class="prod-tab" onclick="switchTab('bpf')">LTCC 带通滤波器</button>
         <button class="prod-tab" onclick="switchTab('hpf')">LTCC 高通滤波器</button>
         <button class="prod-tab" onclick="switchTab('thinfilm')">薄膜带通滤波器</button>
         <button class="prod-tab" onclick="switchTab('divider')">功分器系列</button>
-        <button class="prod-tab" onclick="switchTab('coupler')">耦合器系列</button>
         <button class="prod-tab" onclick="switchTab('bridge')">电桥系列</button>
+        <button class="prod-tab" onclick="switchTab('sensor')">传感器系列</button>
+      </div>
+
+      <!-- 5G panel -->
+      <div id="tab-5g" class="prod-panel active">
+        <h4 class="prod-section-title">5G 通信频段滤波器</h4>
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">面向 5G 毫米波通信频段（FR2）的 LTCC 带通滤波器选型，覆盖 N257/N258/N259/N260 等主流频段。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>频段代号</th>
+                <th>频率范围</th>
+                <th>型号</th>
+                <th>尺寸</th>
+                <th>滤波器类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>N258</td><td>24.25 ~ 27.5 GHz</td><td>GLBPF-24250-27250-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>2</td><td>N257</td><td>26.5 ~ 29.5 GHz</td><td>GLBPF-24250-27250-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>3</td><td>N260</td><td>37 ~ 43.5 GHz</td><td>GLBPF-37000-43500-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>4</td><td>N259</td><td>39.5 ~ 43.5 GHz</td><td>GLBPF-39500-43500-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 更多 5G Sub-6G 频段型号见「LTCC 带通滤波器」清单，欢迎按频段定制。</p>
+      </div>
+
+      <!-- 6G panel -->
+      <div id="tab-6g" class="prod-panel">
+        <h4 class="prod-section-title">6G 通信频段滤波器</h4>
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">面向 6G 高频段应用的 LTCC 低通滤波器，适用于 N104 等频段信号选择与抑制。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>频段代号</th>
+                <th>频率范围</th>
+                <th>型号</th>
+                <th>尺寸</th>
+                <th>滤波器类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>N104</td><td>52.6 ~ 71 GHz</td><td>GLLPF-52600-71000-45-32</td><td>4.5×3.2 mm</td><td>低通滤波器</td></tr>
+              <tr><td>2</td><td>N104</td><td>114.25 ~ 130 GHz</td><td>GLLPF-114250-130000-45-32</td><td>4.5×3.2 mm</td><td>低通滤波器</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 6G 频段滤波器可按系统指标定制，请联系我们获取完整方案。</p>
+      </div>
+
+      <!-- Satellite panel -->
+      <div id="tab-satellite" class="prod-panel">
+        <h4 class="prod-section-title">卫星通信频段滤波器</h4>
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:20px;">覆盖卫星互联网（地轨宽带）及卫星测控与数传等场景的 LTCC 带通滤波器选型。</p>
+
+        <h4 class="prod-section-title" style="font-size:15px;margin-top:0;">卫星互联网（地轨宽带）</h4>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>链路方向</th>
+                <th>频率范围</th>
+                <th>型号</th>
+                <th>尺寸</th>
+                <th>滤波器类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>上行</td><td>14.0 ~ 14.5 GHz</td><td>GLBPF-14000-14500-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>2</td><td>下行</td><td>10.7 ~ 12.7 GHz</td><td>GLBPF-10700-12700-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>3</td><td>Q/V 馈电</td><td>47.2 ~ 50.2 GHz</td><td>GLBPF-47200-50200-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+              <tr><td>4</td><td>Q/V 馈电</td><td>47.2 ~ 51.4 GHz</td><td>GLBPF-47200-51400-45-32</td><td>4.5×3.2 mm</td><td>带通滤波器</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="prod-section-title" style="font-size:15px;">卫星测控与数传</h4>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>频段</th>
+                <th>频率范围</th>
+                <th>型号</th>
+                <th>尺寸</th>
+                <th>滤波器类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2">1</td>
+                <td rowspan="2">S</td>
+                <td>2.025 ~ 2.11 GHz</td>
+                <td>GLBPF-2025-2110-45-32</td>
+                <td>4.5×3.2 mm</td>
+                <td rowspan="2">带通滤波器</td>
+              </tr>
+              <tr>
+                <td>2.2 ~ 2.29 GHz</td>
+                <td>GLBPF-2200-2290-45-32</td>
+                <td>4.5×3.2 mm</td>
+              </tr>
+              <tr>
+                <td rowspan="2">2</td>
+                <td rowspan="2">X</td>
+                <td>7.25 ~ 7.75 GHz</td>
+                <td>GLBPF-7250-7750-45-32</td>
+                <td>4.5×3.2 mm</td>
+                <td rowspan="2">带通滤波器</td>
+              </tr>
+              <tr>
+                <td>7.9 ~ 8.4 GHz</td>
+                <td>GLBPF-7900-8400-45-32</td>
+                <td>4.5×3.2 mm</td>
+              </tr>
+              <tr>
+                <td rowspan="2">3</td>
+                <td rowspan="2">Ka</td>
+                <td>27.5 ~ 31 GHz</td>
+                <td>GLBPF-27500-31000-45-32</td>
+                <td>4.5×3.2 mm</td>
+                <td rowspan="2">带通滤波器</td>
+              </tr>
+              <tr>
+                <td>17.7 ~ 20.2 GHz</td>
+                <td>GLBPF-17700-20200-45-32</td>
+                <td>4.5×3.2 mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 卫星通信频段滤波器支持按链路、带宽与封装定制，完整手册请联系我们。</p>
       </div>
 
       <!-- LPF panel -->
-      <div id="tab-lpf" class="prod-panel active">
+      <div id="tab-lpf" class="prod-panel">
         <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">以下为 LTCC 低通滤波器部分选型清单（全系列请联系询价）。产品遵循 GJB9152-2017 标准，1206 封装（3.2×1.6mm），功率 ≤2W，温度 -55°C~+125°C。</p>
         <div class="prod-table-wrap">
           <table class="prod-table">
@@ -746,7 +930,7 @@
             </tbody>
           </table>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 另有 LTCC 高通滤波器、薄膜带通滤波器、腔体滤波器、LC滤波器等系列，如需完整选型手册请联系我们。</p>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 另有LC滤波器、SiP、AiP封装天线、LTCC/HTCC封装类微波定制设计及工艺加工，如有需求请联系我们。</p>
         <div style="margin-top:20px;">
           <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📊 典型产品实测 S 参数曲线</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
@@ -780,47 +964,62 @@
 
       <!-- BPF panel -->
       <div id="tab-bpf" class="prod-panel">
-        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 带通滤波器（BPF）选型清单，频率覆盖 86 MHz ~ 41 GHz，含 5G毫米波（24~41GHz）频段。遵循 GJB9152-2017 标准，SMD贴片封装，功率 ≤2W。</p>
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC / PCB 带通滤波器（BPF）选型清单，共 45 款，频率覆盖 86 MHz ~ 51 GHz。遵循 GJB9152-2017 标准，SMD 贴片封装，功率 ≤2W。</p>
         <div class="prod-table-wrap">
           <table class="prod-table">
             <thead>
-              <tr><th>序号</th><th>型号</th><th>通带频率</th><th>封装尺寸</th></tr>
+              <tr><th>序号</th><th>型号</th><th>频率 (MHz)</th><th>尺寸 (mm)</th><th>工艺</th></tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>GLBPF-86-94-45-32</td><td>86 ~ 94 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>2</td><td>GLBPF-230-350-45-32</td><td>230 ~ 350 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>3</td><td>GLBPF-250-350-45-32</td><td>250 ~ 350 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>4</td><td>GLBPF-270-450-80-50</td><td>270 ~ 450 MHz</td><td>8.0×5.0 mm</td></tr>
-              <tr><td>5</td><td>GLBPF-330-450-45-32</td><td>330 ~ 450 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>6</td><td>GLBPF-275-475-45-32</td><td>275 ~ 475 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>7</td><td>GLBPF-550-950-45-32</td><td>550 ~ 950 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>8</td><td>GLBPF-580-820-45-32</td><td>580 ~ 820 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>9</td><td>GLBPF-700-900-45-32</td><td>700 ~ 900 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>10</td><td>GLBPF-800-1400-45-32</td><td>800 ~ 1400 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>11</td><td>GLBPF-1200-1600-45-32</td><td>1200 ~ 1600 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>12</td><td>GLBPF-1300-2300-45-32</td><td>1300 ~ 2300 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>13</td><td>GLBPF-1350-1850-45-32</td><td>1350 ~ 1850 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>14</td><td>GLBPF-1650-1950-45-32</td><td>1650 ~ 1950 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>15</td><td>GLBPF-1650-3150-45-32</td><td>1650 ~ 3150 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>16</td><td>GLBPF-1700-1900-45-32</td><td>1700 ~ 1900 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>17</td><td>GLBPF-1900-2300-45-32</td><td>1900 ~ 2300 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>18</td><td>GLBPF-2000-2400-90-45</td><td>2000 ~ 2400 MHz</td><td>9.0×4.5 mm</td></tr>
-              <tr><td>19</td><td>GLBPF-2200-2600-45-32</td><td>2200 ~ 2600 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>20</td><td>GLBPF-3510-3550-45-25</td><td>3510 ~ 3550 MHz（5G N78）</td><td>4.5×2.5 mm</td></tr>
-              <tr><td>21</td><td>GLBPF-4100-4500-45-32</td><td>4100 ~ 4500 MHz</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>22</td><td>GLBPF-5100-5300-32-25</td><td>5100 ~ 5300 MHz</td><td>3.2×2.5 mm</td></tr>
-              <tr><td>23</td><td>GLBPF-7600-8500-32-25</td><td>7600 ~ 8500 MHz（X波段）</td><td>3.2×2.5 mm</td></tr>
-              <tr><td>24</td><td>GLBPF-9200-10400-32-25</td><td>9200 ~ 10400 MHz（X波段）</td><td>3.2×2.5 mm</td></tr>
-              <tr><td>25</td><td>GLBPF-24250-27250-45-32</td><td>24250 ~ 27250 MHz（5G mmWave）</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>26</td><td>GLBPF-24250-27250-25-16</td><td>24250 ~ 27250 MHz（5G mmWave）</td><td>2.5×1.6 mm</td></tr>
-              <tr><td>27</td><td>GLBPF-26500-29500-45-32</td><td>26500 ~ 29500 MHz（Ka波段）</td><td>4.5×3.2 mm</td></tr>
-              <tr><td>28</td><td>GLBPF-26500-29500-20-12</td><td>26500 ~ 29500 MHz（Ka波段）</td><td>2.0×1.2 mm</td></tr>
-              <tr><td>29</td><td>GLBPF-30000-35000-20-12</td><td>30 ~ 35 GHz（Ka波段）</td><td>2.0×1.2 mm</td></tr>
-              <tr><td>30</td><td>GLBPF-35000-41000-20-12</td><td>35 ~ 41 GHz（Ka/V波段）</td><td>2.0×1.2 mm</td></tr>
+              <tr><td>1</td><td>GLBPF-86-94-45-32</td><td>86 ~ 94</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>2</td><td>GLBPF-230-350-45-32</td><td>230 ~ 350</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>3</td><td>GLBPF-250-350-45-32</td><td>250 ~ 350</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>4</td><td>GLBPF-270-450-80-50</td><td>270 ~ 450</td><td>8.0×5.0</td><td>LTCC</td></tr>
+              <tr><td>5</td><td>GLBPF-275-475-45-32</td><td>275 ~ 475</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>6</td><td>GLBPF-320-500-38-38</td><td>320 ~ 500</td><td>3.8×3.8</td><td>LTCC</td></tr>
+              <tr><td>7</td><td>GLBPF-330-450-45-32</td><td>330 ~ 450</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>8</td><td>GLBPF-400-600-38-38</td><td>400 ~ 600</td><td>3.8×3.8</td><td>LTCC</td></tr>
+              <tr><td>9</td><td>GLBPF-470-760-38-38</td><td>470 ~ 760</td><td>3.8×3.8</td><td>LTCC</td></tr>
+              <tr><td>10</td><td>GLBPF-550-950-45-32</td><td>550 ~ 950</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>11</td><td>GLBPF-580-820-45-32</td><td>580 ~ 820</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>12</td><td>GLBPF-700-900-45-32</td><td>700 ~ 900</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>13</td><td>GLBPF-800-1400-45-32</td><td>800 ~ 1400</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>14</td><td>GLBPF-1200-1600-45-32</td><td>1200 ~ 1600</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>15</td><td>GLBPF-1350-1675-45-32</td><td>1350 ~ 1675</td><td>3.2×2.5</td><td>LTCC</td></tr>
+              <tr><td>16</td><td>GLBPF-1300-2300-45-32</td><td>1300 ~ 2300</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>17</td><td>GLBPF-1350-1650-45-32</td><td>1350 ~ 1650</td><td>3.2×2.5</td><td>LTCC</td></tr>
+              <tr><td>18</td><td>GLBPF-1650-1950-45-32</td><td>1650 ~ 1950</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>19</td><td>GLBPF-1650-3150-45-32</td><td>1650 ~ 3150</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>20</td><td>GLBPF-1700-1900-45-32</td><td>1700 ~ 1900</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>21</td><td>GPBPF-1750-2050-16-08</td><td>1750 ~ 2050</td><td>1.6×0.8</td><td>PCB</td></tr>
+              <tr><td>22</td><td>GLBPF-1900-2300-45-32</td><td>1900 ~ 2300</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>23</td><td>GLBPF-2000-2400-90-45</td><td>2000 ~ 2400</td><td>9.0×4.5</td><td>LTCC</td></tr>
+              <tr><td>24</td><td>GLBPF-2250-2600-32-16</td><td>2250 ~ 2600</td><td>3.2×1.6</td><td>LTCC</td></tr>
+              <tr><td>25</td><td>GLBPF-2900-7000-32-16</td><td>2900 ~ 7000</td><td>3.2×1.6</td><td>LTCC</td></tr>
+              <tr><td>26</td><td>GLBPF-3510-3550-45-25</td><td>3510 ~ 3550</td><td>4.5×2.5</td><td>LTCC</td></tr>
+              <tr><td>27</td><td>GPBPF-3150-4450-20-12</td><td>3150 ~ 4450</td><td>2.0×1.2</td><td>PCB</td></tr>
+              <tr><td>28</td><td>GLBPF-4100-4500-45-32</td><td>4100 ~ 4500</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>29</td><td>GLBPF-4200-6600-45-32</td><td>4200 ~ 6600</td><td>3.2×1.6</td><td>LTCC</td></tr>
+              <tr><td>30</td><td>GLBPF-5100-5300-32-25</td><td>5100 ~ 5300</td><td>3.2×2.5</td><td>LTCC</td></tr>
+              <tr><td>31</td><td>GLBPF-5700-7125-45-32</td><td>5700 ~ 7125</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>32</td><td>GLBPF-7600-8500-32-25</td><td>7600 ~ 8500</td><td>3.2×2.5</td><td>LTCC</td></tr>
+              <tr><td>33</td><td>GLBPF-9200-10400-32-25</td><td>9200 ~ 10400</td><td>3.2×2.5</td><td>LTCC</td></tr>
+              <tr><td>34</td><td>GLBPF-9500-12000-32-16</td><td>9500 ~ 12000</td><td>3.2×1.6</td><td>LTCC</td></tr>
+              <tr><td>35</td><td>GLBPF-10200-13200-25-20</td><td>10200 ~ 13200</td><td>2.5×2.0</td><td>LTCC</td></tr>
+              <tr><td>36</td><td>GLBPF-10700-14300-45-32</td><td>10700 ~ 14300</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>37</td><td>GLBPF-13700-18000-50-38</td><td>13700 ~ 18000</td><td>5.0×3.8</td><td>LTCC</td></tr>
+              <tr><td>38</td><td>GLBPF-17000-22500-50-38</td><td>17000 ~ 22500</td><td>5.0×3.8</td><td>LTCC</td></tr>
+              <tr><td>39</td><td>GLBPF-24250-27250-45-32</td><td>24250 ~ 27250</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>40</td><td>GLBPF-24250-27250-25-16</td><td>24250 ~ 27250</td><td>2.5×1.6</td><td>LTCC</td></tr>
+              <tr><td>41</td><td>GLBPF-26500-29500-45-32</td><td>26500 ~ 29500</td><td>4.5×3.2</td><td>LTCC</td></tr>
+              <tr><td>42</td><td>GLBPF-26500-29500-20-12</td><td>26500 ~ 29500</td><td>2.0×1.2</td><td>LTCC</td></tr>
+              <tr><td>43</td><td>GLBPF-30000-35000-20-12</td><td>30000 ~ 35000</td><td>2.0×1.2</td><td>LTCC</td></tr>
+              <tr><td>44</td><td>GLBPF-35000-41000-20-12</td><td>35000 ~ 41000</td><td>2.0×1.2</td><td>LTCC</td></tr>
+              <tr><td>45</td><td>GLBPF-36000-51000-25-20</td><td>36000 ~ 51000</td><td>2.5×2.0</td><td>LTCC</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名规则：GL-公司前缀 / L-LTCC工艺 / BPF-带通滤波器 / 通带频率(MHz) / 尺寸(mm)。支持 5G Sub-6G、X波段、Ka波段等。</p>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名：GL-公司前缀 / L-LTCC 或 G-PCB / BPF-带通 / 通带频率(MHz) / 尺寸(mm)。GPBPF 为 PCB 工艺，其余为 LTCC。</p>
         <div style="margin-top:20px;">
           <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">📊 典型产品实测 S 参数曲线</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
@@ -1005,33 +1204,6 @@
         </div>
       </div>
 
-      <!-- Coupler panel -->
-      <div id="tab-coupler" class="prod-panel">
-        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">宽带定向耦合器系列，频率覆盖 100 MHz ~ 6000 MHz，提供多种耦合度选择。产品适用于功率监测、信号采样、射频测试及通信系统中的定向功率检测等应用场景。</p>
-        <div class="prod-table-wrap">
-          <table class="prod-table">
-            <thead>
-              <tr>
-                <th>类型</th>
-                <th>频率范围</th>
-                <th>耦合度</th>
-                <th>封装</th>
-                <th>特点</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>宽带定向耦合器</td><td>100 ~ 1000 MHz</td><td>10 dB</td><td>PCB/LTCC</td><td>高方向性 ≥20dB，主路插损 ≤0.5dB</td></tr>
-              <tr><td>宽带定向耦合器</td><td>100 ~ 3000 MHz</td><td>3 dB</td><td>PCB/LTCC</td><td>等功率分配，幅度平衡 ±0.5dB</td></tr>
-              <tr><td>宽带定向耦合器</td><td>500 ~ 3000 MHz</td><td>6 dB</td><td>PCB/LTCC</td><td>低插损，宽带宽，高隔离度</td></tr>
-              <tr><td>宽带定向耦合器</td><td>800 ~ 4000 MHz</td><td>10 dB</td><td>LTCC SMD</td><td>小型化，适合集成射频前端</td></tr>
-              <tr><td>宽带定向耦合器</td><td>1000 ~ 6000 MHz</td><td>20 dB</td><td>LTCC SMD</td><td>高方向性，适合功率监测</td></tr>
-              <tr><td>定制耦合器</td><td>按需定制</td><td>按需定制</td><td>多种封装</td><td>按客户需求设计频率、耦合度与指标</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 耦合器产品可根据客户系统需求提供定制化设计（频率/耦合度/封装），欢迎提供技术规格进行评估。完整产品手册请联系我们获取。</p>
-      </div>
-
       <!-- Bridge panel -->
       <div id="tab-bridge" class="prod-panel">
         <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 混合电桥系列产品，适用于相移控制、功率合成、I/Q调制等应用场合。如需完整选型手册请联系我们。</p>
@@ -1047,7 +1219,6 @@
             </thead>
             <tbody>
               <tr><td>90° 正交混合电桥</td><td>800 ~ 4000 MHz</td><td>LTCC SMD</td><td>相位差 90°±5°，幅度一致性 ±0.5 dB</td></tr>
-              <tr><td>180° 混合电桥</td><td>800 ~ 3500 MHz</td><td>LTCC SMD</td><td>宽带宽，高隔离度，低插损</td></tr>
               <tr><td>定制电桥</td><td>按需定制</td><td>多种封装</td><td>按客户需求设计频率/指标</td></tr>
             </tbody>
           </table>
@@ -1059,8 +1230,49 @@
         </div>
       </div>
 
+      <!-- Sensor panel -->
+      <div id="tab-sensor" class="prod-panel">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">基于 LTCC 工艺的气体与压力传感器解决方案，涵盖 LC 无源无线气体传感、多层微流控压力检测模组及陶瓷扩散膜电化学敏感探头。详细技术说明请查看在线资料或联系我们获取定制方案。</p>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th>产品类型</th>
+                <th>技术特点</th>
+                <th>典型应用</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>LTCC 气体传感器</td><td>LC 螺旋电感 + 叉指电容一体化；支持无源无线检测</td><td>气体检测、实验室传感、嵌入式监测</td></tr>
+              <tr><td>LTCC 压力传感器</td><td>多层 LTCC 叠层；微流道（≈1mm）；集成电极与扩散膜</td><td>微流控分析、液体/压力检测、模组化系统</td></tr>
+              <tr><td>陶瓷敏感探头</td><td>ZrO₂ 电解质多层结构；尾气/参考空气通道</td><td>电化学气体检测、汽车尾气传感</td></tr>
+              <tr><td>定制传感器</td><td>敏感材料、封装与接口可按需设计</td><td>按客户指标联合开发</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">LC 气体传感器结构</p>
+            <img src="images/sensor_image1.png" alt="LC气体传感器示意图" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">多层 LTCC 压力传感器</p>
+            <img src="images/sensor_image2.png" alt="LTCC压力传感器叠层结构" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">传感器模组实物</p>
+            <img src="images/sensor_image3.png" alt="LTCC压力传感器模组" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px;">芯片实物（尺寸参照）</p>
+            <img src="images/sensor_image4.png" alt="LTCC传感器芯片实物" style="width:100%;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);" loading="lazy" />
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:16px;">* 传感器产品可根据目标气体、量程、封装与接口需求提供定制化设计与样品验证，欢迎 <a href="sensor.html" style="color:var(--primary);font-weight:600;">查看完整技术资料</a> 或联系我们。</p>
+      </div>
+
       <div style="text-align:center;margin-top:28px;">
-        <a href="#contact" class="btn-primary" style="display:inline-block;">📩 获取完整产品手册</a>
+        <a href="#contact" class="btn-primary" style="display:inline-block;">📩 咨询定制需求</a>
       </div>
     </div>
   </div>
@@ -1153,55 +1365,52 @@
       <div class="contact-info fade-in">
         <div class="section-tag" style="background:rgba(255,255,255,0.15);color:#fff;">CONTACT US</div>
         <h2 style="margin-top:12px;">联系我们</h2>
-        <p>如果您对我们的产品感兴趣，或有定制需求，欢迎随时与我们联系。我们将在最短时间内回复您。</p>
+        <p>产品咨询与定制需求，欢迎电话、微信或邮件联系。</p>
 
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="ci-icon">👤</div>
-            <div class="ci-text">
-              <h4>联系人</h4>
-              <p>孙经理</p>
+        <div class="contact-compact">
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="ci-icon">👤</div>
+              <div class="ci-text">
+                <h4>联系人</h4>
+                <p>孙经理</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">📞</div>
+              <div class="ci-text">
+                <h4>电话 / 微信</h4>
+                <p><a href="tel:17785663396" style="color:#fff;text-decoration:none;">17785663396</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">📧</div>
+              <div class="ci-text">
+                <h4>邮箱</h4>
+                <p><a href="mailto:technology@likemicrowave.com.cn" style="color:#fff;text-decoration:none;word-break:break-all;">technology@likemicrowave.com.cn</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">📍</div>
+              <div class="ci-text">
+                <h4>地址</h4>
+                <p>贵州省遵义市汇川区上海路新长征尊城8号楼1203厂房</p>
+              </div>
             </div>
           </div>
-          <div class="contact-item">
-            <div class="ci-icon">📍</div>
-            <div class="ci-text">
-              <h4>公司地址</h4>
-              <p>贵州省遵义市汇川区上海路街道<br/>上海路新长征尊城8号楼1203厂房</p>
-            </div>
-          </div>
-        </div>
 
-        <!-- 直联按钮 -->
-        <div class="direct-btns">
-          <a href="tel:18656800727" class="direct-btn direct-btn-call">
-            <span class="db-icon">📞</span>
-            <span class="db-text">
-              <span class="db-label">立即拨打</span>
-              <span class="db-val">186-5680-0727</span>
-            </span>
-          </a>
-          <a href="tel:17785663396" class="direct-btn direct-btn-call">
-            <span class="db-icon">📞</span>
-            <span class="db-text">
-              <span class="db-label">立即拨打</span>
-              <span class="db-val">177-8566-3396</span>
-            </span>
-          </a>
-          <button class="direct-btn direct-btn-wx" onclick="copyWechat(this)">
-            <span class="db-icon">💬</span>
-            <span class="db-text">
-              <span class="db-label">微信号（点击复制）</span>
-              <span class="db-val">18656800727</span>
-            </span>
-          </button>
+          <div class="wechat-qr-wrap">
+            <h4>微信扫码</h4>
+            <img src="images/wechat-qrcode.png" alt="微信二维码" width="168" loading="lazy" />
+            <p>Like-microwave</p>
+          </div>
         </div>
       </div>
 
       <!-- Right: message form -->
       <div class="contact-form fade-in">
         <h3>📋 填写需求</h3>
-        <p style="font-size:13px;color:#888;margin-bottom:20px;">填写后点击按钮，内容将自动复制到剪贴板，打开微信搜索 <strong style="color:var(--primary)">18656800727</strong> 即可粘贴发送。</p>
+        <p class="form-intro">填写后一键复制，打开微信粘贴发送即可。</p>
         <form id="contactForm" onsubmit="submitForm(event)">
           <div class="form-row">
             <div class="form-group">
@@ -1224,8 +1433,8 @@
                 <option value="">请选择</option>
                 <option>滤波器系列</option>
                 <option>功分器系列</option>
-                <option>耦合器系列</option>
                 <option>电桥系列</option>
+                <option>传感器系列</option>
                 <option>其他 / 定制需求</option>
               </select>
             </div>
@@ -1235,17 +1444,16 @@
             <textarea name="message" placeholder="请描述您的需求，例如：产品型号、频率范围、数量等..." required></textarea>
           </div>
           <button type="submit" class="btn-primary form-submit" id="submitBtn">复制需求 · 去微信发送</button>
-          <p class="form-note">点击后内容自动复制，打开微信搜索 18656800727 粘贴即可</p>
+          <p class="form-note">复制后打开微信粘贴发送</p>
         </form>
 
         <!-- 成功提示 -->
         <div id="copySuccess" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:20px;margin-top:16px;text-align:center;">
           <div style="font-size:28px;margin-bottom:8px;">✅</div>
           <p style="color:#166534;font-weight:700;font-size:16px;margin-bottom:6px;">需求已复制到剪贴板！</p>
-          <p style="color:#15803d;font-size:14px;margin-bottom:14px;">打开微信，搜索号码 <strong>18656800727</strong>，粘贴后发送即可</p>
+          <p style="color:#15803d;font-size:14px;margin-bottom:14px;">打开微信粘贴发送即可</p>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <button onclick="copyWechat(this)" style="background:#07c160;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;">再次复制微信号</button>
-            <button onclick="document.getElementById('copySuccess').style.display='none';document.getElementById('contactForm').style.display='block'" style="background:transparent;color:#666;border:1px solid #ddd;padding:10px 20px;border-radius:6px;font-size:14px;cursor:pointer;">重新填写</button>
+            <button onclick="document.getElementById('copySuccess').style.display='none';document.getElementById('contactForm').style.display='block'" style="background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;">继续填写</button>
           </div>
         </div>
       </div>
@@ -1271,7 +1479,7 @@
     </div>
     <div class="footer-bottom">
       <p>版权所有 © 2026 贵州理科微波科技有限公司 · 保留所有权利</p>
-      <p style="margin-top:6px;">地址：贵州省遵义市汇川区上海路街道上海路新长征尊城8号楼1203厂房 &nbsp;|&nbsp; 联系人：孙经理 &nbsp;|&nbsp; 电话：18656800727</p>
+      <p style="margin-top:6px;">地址：贵州省遵义市汇川区上海路街道上海路新长征尊城8号楼1203厂房 &nbsp;|&nbsp; 联系人：孙经理 &nbsp;|&nbsp; 电话：17785663396 &nbsp;|&nbsp; 邮箱：<a href="mailto:technology@likemicrowave.com.cn" style="color:rgba(255,255,255,0.75);">technology@likemicrowave.com.cn</a></p>
     </div>
   </div>
 </footer>
@@ -1363,9 +1571,17 @@
     });
   }
 
+  // Product card → manual preview
+  document.querySelectorAll('.prod-card[data-manual]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const type = card.dataset.manual;
+      location.href = type === 'sensor' ? 'sensor.html' : 'manual.html?type=' + type;
+    });
+  });
+
   // Tab switching
-  function switchTab(name) {
-    const names = ['lpf', 'bpf', 'hpf', 'thinfilm', 'divider', 'coupler', 'bridge'];
+  function switchTab(name, scrollToDetail) {
+    const names = ['5g', '6g', 'satellite', 'lpf', 'bpf', 'hpf', 'thinfilm', 'divider', 'bridge', 'sensor'];
     document.querySelectorAll('.prod-tab').forEach((t, i) => {
       t.classList.toggle('active', names[i] === name);
     });
@@ -1373,7 +1589,10 @@
     const panel = document.getElementById('tab-' + name);
     if (panel) panel.classList.add('active');
     ensurePanelImagesLoaded(panel);
-    setTimeout(() => { document.getElementById('prod-detail').scrollIntoView({behavior:'smooth', block:'start'}); }, 50);
+    if (scrollToDetail) {
+      const detail = document.getElementById('prod-detail');
+      if (detail) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
   document.querySelectorAll('img[src]').forEach((img) => {
     bindImageFallback(img);
@@ -1402,23 +1621,6 @@
       closeMenu();
     }
   });
-
-  // Copy WeChat number
-  function copyWechat(btn) {
-    navigator.clipboard.writeText('18656800727').then(() => {
-      const orig = btn.innerHTML;
-      btn.style.background = '#06ad56';
-      btn.querySelector && btn.querySelector('.db-val') 
-        ? (btn.querySelector('.db-label').textContent = '已复制 ✓') 
-        : (btn.textContent = '已复制 ✓');
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-      }, 2000);
-    }).catch(() => {
-      prompt('请手动复制微信号：', '18656800727');
-    });
-  }
 
   // Form submit — copy content to clipboard
   function submitForm(e) {
