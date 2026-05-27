@@ -650,7 +650,7 @@
       <div class="section-tag">PRODUCTS</div>
       <h2>产品中心</h2>
       <div class="divider"></div>
-      <p>公司专注微波器件与 LTCC 传感领域，产品覆盖滤波器（85+ 款）、功分器（8 款）、电桥、气体/压力传感器等系列，遵循 GJB9152-2017 等行业标准规范，可直接对标 Mini-Circuits 等国际品牌</p>
+      <p>公司专注微波器件与 LTCC 传感领域，产品覆盖滤波器（85+ 款）、功分器（8 款）、电桥（10 款）、气体/压力传感器等系列，遵循 GJB9152-2017 等行业标准规范，可直接对标 Mini-Circuits 等国际品牌</p>
     </div>
 
     <!-- Product overview cards -->
@@ -695,13 +695,13 @@
         <div class="prod-img has-img"><img src="images/bridge_image4.jpeg" alt="LTCC电桥产品实物" loading="lazy" style="background:#fff;object-fit:contain;padding:20px;" /></div>
         <div class="prod-body">
           <h3>电桥系列</h3>
-          <p>LTCC 90° 正交混合电桥产品，适用于相移控制、功率合成与分配、I/Q 调制等射频前端电路设计。</p>
+          <p>LTCC / PCB 90° 正交混合电桥，共 10 款标准型号，频率覆盖 100 MHz ~ 6000 MHz，适用于相移控制、功率合成与分配、I/Q 调制等射频前端电路。</p>
           <ul class="prod-features">
-            <li>90° 正交混合电桥（LTCC）</li>
-            <li>宽频带，幅相一致性好</li>
-            <li>SMD 贴片封装</li>
-            <li>标准 50Ω 系统阻抗</li>
-            <li>可定制频段与封装形式</li>
+            <li>90° 正交混合电桥（LTCC / PCB）</li>
+            <li>频率 100 MHz ~ 6000 MHz</li>
+            <li>可对标 Mini-Circuits QCV / QCN 等系列</li>
+            <li>SMD 贴片封装，50Ω 系统</li>
+            <li>支持定制频段与封装</li>
           </ul>
           <div class="prod-links">
             <a href="#prod-detail" class="prod-link" onclick="event.stopPropagation(); switchTab('bridge', true)">查看选型清单 →</a>
@@ -1080,24 +1080,34 @@
 
       <!-- Bridge panel -->
       <div id="tab-bridge" class="prod-panel">
-        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC 混合电桥系列产品，适用于相移控制、功率合成、I/Q调制等应用场合。如需完整选型手册请联系我们。</p>
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px;">LTCC / PCB 90° 正交混合电桥选型清单，共 10 款，频率覆盖 100 MHz ~ 6000 MHz。适用于相移控制、功率合成与分配、I/Q 调制等应用。遵循 GJB9152-2017 标准，SMD 贴片封装，阻抗 50Ω，功率 ≤2W。</p>
         <div class="prod-table-wrap">
           <table class="prod-table">
             <thead>
               <tr>
-                <th>类型</th>
-                <th>频率范围</th>
-                <th>封装</th>
-                <th>特点</th>
+                <th>序号</th>
+                <th>型号</th>
+                <th>频率 (MHz)</th>
+                <th>尺寸 (mm)</th>
+                <th>工艺</th>
+                <th>对标 Mini-Circuits</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>90° 正交混合电桥</td><td>800 ~ 4000 MHz</td><td>LTCC SMD</td><td>相位差 90°±5°，幅度一致性 ±0.5 dB</td></tr>
-              <tr><td>定制电桥</td><td>按需定制</td><td>多种封装</td><td>按客户需求设计频率/指标</td></tr>
+              <tr><td>1</td><td>GLHC-100-160-32-25</td><td>100 ~ 160</td><td>3.2×2.5</td><td>LTCC</td><td>QCV-151</td></tr>
+              <tr><td>2</td><td>GLHC-270-520-32-16</td><td>270 ~ 520</td><td>3.2×1.6</td><td>LTCC</td><td>—</td></tr>
+              <tr><td>3</td><td>GLHC-480-780-32-16</td><td>480 ~ 780</td><td>3.2×1.6</td><td>LTCC</td><td>—</td></tr>
+              <tr><td>4</td><td>GLHC-780-1500-32-16</td><td>780 ~ 1500</td><td>3.2×1.6</td><td>LTCC</td><td>QCN-12</td></tr>
+              <tr><td>5</td><td>GLHC-1100-1900-32-16</td><td>1100 ~ 1900</td><td>3.2×1.6</td><td>LTCC</td><td>QCN-19</td></tr>
+              <tr><td>6</td><td>GPHC-1700-2300-20-12</td><td>1700 ~ 2300</td><td>2.0×1.25</td><td>PCB</td><td>—</td></tr>
+              <tr><td>7</td><td>GLHC-1800-2400-32-25</td><td>1800 ~ 2400</td><td>3.2×1.6</td><td>LTCC</td><td>QCN-25</td></tr>
+              <tr><td>8</td><td>GPHC-2000-2600-20-12</td><td>2000 ~ 2600</td><td>2.0×1.25</td><td>PCB</td><td>—</td></tr>
+              <tr><td>9</td><td>GPHC-3000-4000-20-12</td><td>3000 ~ 4000</td><td>2.0×1.25</td><td>PCB</td><td>—</td></tr>
+              <tr><td>10</td><td>GPHC-3500-6000-20-12</td><td>3500 ~ 6000</td><td>2.0×1.25</td><td>PCB</td><td>—</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 电桥产品可根据客户需求提供定制化设计，欢迎提供技术规格进行评估。</p>
+        <p style="font-size:13px;color:var(--text-light);margin-top:12px;">* 型号命名：GL-公司前缀 / L-LTCC 或 G-PCB / HC-混合电桥 / 频率范围(MHz) / 尺寸(mm)。GLHC 为 LTCC 工艺，GPHC 为 PCB 工艺。表中未列 Mini 对标的型号或需定制频段，欢迎联系我们评估。</p>
       </div>
 
       <!-- Sensor panel -->
