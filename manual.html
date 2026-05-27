@@ -56,38 +56,73 @@
       color: rgba(255,255,255,0.65);
       white-space: nowrap;
     }
-    .manual-frame {
+    .manual-viewer {
       flex: 1;
       min-height: 0;
-      border: none;
-      width: 100%;
-      background: #525659;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 16px;
+      user-select: none;
+      -webkit-user-select: none;
     }
-    .manual-fallback {
+    /* 微信等内核里 display:flex 会盖掉 [hidden]，必须显式隐藏 */
+    .manual-status[hidden],
+    #pdfPages[hidden] {
+      display: none !important;
+    }
+    .manual-status {
       display: none;
-      flex: 1;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      padding: 24px;
-      color: #fff;
+      min-height: 200px;
+      padding: 32px 24px;
+      color: rgba(255,255,255,0.9);
       text-align: center;
+      gap: 12px;
     }
-    .manual-fallback p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; }
-    .manual-fallback a {
+    .manual-status.is-active {
+      display: flex;
+    }
+    .manual-status p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+    .manual-status button {
+      margin-top: 8px;
       color: #fff;
       background: var(--accent);
       padding: 10px 24px;
+      border: none;
       border-radius: 6px;
-      text-decoration: none;
       font-size: 14px;
       font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    #pdfPages {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    #pdfPages.is-active {
+      display: flex;
+    }
+    .pdf-page-wrap {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      line-height: 0;
+    }
+    .pdf-page-wrap canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
     @media (max-width: 640px) {
       .manual-header { flex-wrap: wrap; padding: 10px 14px; }
       .manual-header .note { width: 100%; order: 3; }
       .manual-header h1 { font-size: 14px; white-space: normal; }
+      .manual-viewer { padding: 10px; }
     }
   </style>
 </head>
@@ -95,14 +130,20 @@
   <header class="manual-header">
     <button type="button" id="backBtn">← 返回</button>
     <h1 id="manualTitle">产品手册</h1>
-    <span class="note">浏览器在线预览 · 仅供浏览</span>
+    <span class="note">在线预览 · 不支持下载</span>
   </header>
-  <iframe id="pdfFrame" class="manual-frame" title="产品手册预览"></iframe>
-  <div id="manualFallback" class="manual-fallback">
-    <p>当前环境无法内嵌预览，请点击下方按钮使用浏览器打开手册。</p>
-    <a id="openPdfLink" href="#">在浏览器中打开手册</a>
-  </div>
+  <main id="pdfViewer" class="manual-viewer">
+    <div id="pdfLoading" class="manual-status is-active">
+      <p>正在加载手册，请稍候…</p>
+    </div>
+    <div id="pdfPages"></div>
+    <div id="pdfError" class="manual-status">
+      <p id="pdfErrorMsg">手册预览加载失败，请检查网络后重试。</p>
+      <button type="button" id="retryBtn">重新加载</button>
+    </div>
+  </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     const MANUALS = {
       filter: {
@@ -119,6 +160,9 @@
       }
     };
 
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
     function getPageBasePath() {
       const path = window.location.pathname || '/';
       if (path.endsWith('/')) return path;
@@ -134,13 +178,11 @@
     }
 
     function goBack() {
-      // 从新标签页打开时：回到原页面并关闭当前预览页
       if (window.opener && !window.opener.closed) {
         try { window.opener.focus(); } catch (_) {}
         window.close();
         return;
       }
-      // 同页跳转：浏览器后退
       if (window.history.length > 1) {
         window.history.back();
         return;
@@ -153,32 +195,117 @@
     const params = new URLSearchParams(location.search);
     const type = params.get('type') || 'filter';
     const manual = MANUALS[type] || MANUALS.filter;
-
     const pdfUrl = resolvePath(manual.src);
+
     document.title = manual.title + ' - 贵州理科微波';
     document.getElementById('manualTitle').textContent = manual.title;
 
-    const frame = document.getElementById('pdfFrame');
-    const fallback = document.getElementById('manualFallback');
-    const openLink = document.getElementById('openPdfLink');
-    openLink.href = pdfUrl;
+    const viewer = document.getElementById('pdfViewer');
+    const loadingEl = document.getElementById('pdfLoading');
+    const pagesEl = document.getElementById('pdfPages');
+    const errorEl = document.getElementById('pdfError');
+    const errorMsg = document.getElementById('pdfErrorMsg');
 
-    // 使用浏览器内置 PDF 查看器（embed 通过 iframe 加载）
-    frame.src = pdfUrl + '#toolbar=0&navpanes=0';
+    viewer.addEventListener('contextmenu', (e) => e.preventDefault());
+    viewer.addEventListener('dragstart', (e) => e.preventDefault());
 
-    // 部分移动端不支持 iframe 内嵌 PDF，提供降级
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-    if (isMobile) {
-      frame.style.display = 'none';
-      fallback.style.display = 'flex';
-      // 移动端直接跳转浏览器预览
-      location.replace(pdfUrl);
+    function setView(mode) {
+      loadingEl.classList.toggle('is-active', mode === 'loading');
+      errorEl.classList.toggle('is-active', mode === 'error');
+      pagesEl.classList.toggle('is-active', mode === 'pages');
     }
 
-    frame.addEventListener('error', () => {
-      frame.style.display = 'none';
-      fallback.style.display = 'flex';
-    });
+    function showError(msg) {
+      if (msg) errorMsg.textContent = msg;
+      setView('error');
+    }
+
+    function showPages() {
+      setView('pages');
+    }
+
+    /** 布局未完成时 clientWidth 可能为 0，不能用 `a || b-32`（0 会落到负数） */
+    function getMaxWidth() {
+      const w = viewer.clientWidth || document.documentElement.clientWidth || window.innerWidth;
+      return Math.max(280, Math.min(w - 32, 900));
+    }
+
+    function whenLayoutReady() {
+      return new Promise((resolve) => {
+        const run = () => {
+          if (getMaxWidth() >= 280) {
+            resolve();
+            return;
+          }
+          requestAnimationFrame(run);
+        };
+        if (document.readyState === 'complete') requestAnimationFrame(run);
+        else window.addEventListener('load', () => requestAnimationFrame(run), { once: true });
+      });
+    }
+
+    let renderGen = 0;
+
+    async function renderPdf() {
+      const gen = ++renderGen;
+      setView('loading');
+      pagesEl.innerHTML = '';
+
+      try {
+        await whenLayoutReady();
+        if (gen !== renderGen) return;
+
+        const pdf = await pdfjsLib.getDocument({ url: pdfUrl, withCredentials: false }).promise;
+        if (gen !== renderGen) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const maxWidth = getMaxWidth();
+
+        for (let num = 1; num <= pdf.numPages; num++) {
+          const page = await pdf.getPage(num);
+          if (gen !== renderGen) return;
+
+          const baseViewport = page.getViewport({ scale: 1 });
+          const scale = Math.max(0.25, Math.min(maxWidth / baseViewport.width, 2));
+          const viewport = page.getViewport({ scale: scale * dpr });
+
+          const canvas = document.createElement('canvas');
+          const w = Math.floor(viewport.width);
+          const h = Math.floor(viewport.height);
+          if (w < 1 || h < 1) throw new Error('Invalid canvas size');
+
+          canvas.width = w;
+          canvas.height = h;
+          canvas.style.width = (w / dpr) + 'px';
+          canvas.style.height = (h / dpr) + 'px';
+
+          await page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport
+          }).promise;
+
+          const wrap = document.createElement('div');
+          wrap.className = 'pdf-page-wrap';
+          wrap.appendChild(canvas);
+          pagesEl.appendChild(wrap);
+        }
+
+        if (gen !== renderGen) return;
+        showPages();
+      } catch (err) {
+        if (gen !== renderGen) return;
+        console.error(err);
+        const isFileProtocol = location.protocol === 'file:';
+        showError(
+          isFileProtocol
+            ? '请通过 Web 服务器访问本页面后再预览（直接打开本地文件无法加载手册）。'
+            : '手册预览加载失败，请检查网络连接后重试。'
+        );
+      }
+    }
+
+    document.getElementById('retryBtn').addEventListener('click', renderPdf);
+    renderPdf();
   </script>
 </body>
 </html>
