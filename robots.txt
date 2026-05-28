@@ -1,0 +1,12 @@
+# 允许百度等搜索引擎抓取
+User-agent: *
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-render
+Allow: /
+
+# 部署后请将下方域名改为您在浏览器地址栏看到的正式官网（与 site.config.js 中 origin 一致）
+Sitemap: https://www.likemicrowave.com/sitemap.xml
